@@ -1,0 +1,126 @@
+CREATE TABLE Usuario(
+ Id SERIALPRIMARY KEY,
+ Nome VARCHAR(100) NOT NULL,
+ Sexo VARCHAR(1),
+ Email VARCHAR(100) NOT NULL UNIQUE,
+ Foto VARCHAR(100) NOT NULL,
+ Fone VARCHAR(25),
+ Descricao VARCHAR(100),
+ Profissao VARCHAR(50),
+ Cidade VARCHAR(50) NOT NULL,
+ Estado VARCHAR(50) NOT NULL,
+ CEP VARCHAR(10) NOT NULL,
+ Rua VARCHAR(50) NOT NULL,
+ Senha VARCHAR(50)
+);
+
+CREATE TABLE Estabelecimento (
+ Id SERIAL PRIMARY KEY,
+ Nome VARCHAR(50) NOT NULL,
+ Nota REAL,
+ Foto VARCHAR(100) NOT NULL,
+ Fone VARCHAR(25),
+ Tipo VARCHAR(50) NOT NULL,
+ Funcionamento VARCHAR(100),
+ Descricao VARCHAR(100),
+ UserAdd int,
+ Cidade VARCHAR(50) NOT NULL,
+ Estado VARCHAR(50) NOT NULL,
+ CEP VARCHAR(10) NOT NULL,
+ Rua VARCHAR(50) NOT NULL,
+ Numero INTEGER NOT NULL,
+
+ FOREIGN KEY(UserAdd)REFERENCES Usuario(Id)
+);
+
+CREATE TABLE Comida(
+ Id SERIAL PRIMARY KEY,
+ Nome VARCHAR(50) NOT NULL,
+ Nota REAL,
+ Descricao VARCHAR(100) NOT NULL,
+ Preco REAL NOT NULL
+);
+
+CREATE TABLE Amizade(
+ IdUsuarioRemetente INTEGER,
+ IdUsuarioDestinario INTEGER,
+
+ FOREIGN KEY(IdUsuarioRemetente)REFERENCES Usuario(Id),
+ FOREIGN KEY(IdUsuarioDestinario)REFERENCES Usuario(Id),
+ PRIMARY KEY(IdUsuarioRemetente,IdUsuarioDestinario)
+ 
+);
+
+CREATE TABLE AvaliaComida(
+ IdUsuario INTEGER,
+ IdComida INTEGER,
+ Avaliacao REAL,
+ Comentario VARCHAR(50),
+
+ FOREIGN KEY(IdUsuario)REFERENCES Usuario(Id),
+ FOREIGN KEY(IdComida)REFERENCES Comida(Id),
+ PRIMARY KEY(IdUsuario,IdComida)
+);
+
+CREATE TABLE AvaliaEstabelecimento(
+ IdUsuario INT,
+ IdEstabelecimento INT,
+ Avaliacao REAL,
+ Comentario VARCHAR(50),
+
+ FOREIGN KEY(IdUsuario)REFERENCES Usuario(Id),
+ FOREIGN KEY(IdEstabelecimento)REFERENCES Estabelecimento(Id),
+ PRIMARY KEY(IdUsuario,IdEstabelecimento)
+);
+
+CREATE TABLE DivulgaEstabelecimento(
+ IdDivulgacao SERIAL,
+ IdUsuario INT,
+ IdEstabelecimento INT,
+ 
+ FOREIGN KEY(IdUsuario)REFERENCES Usuario(Id),
+ FOREIGN KEY(IdEstabelecimento)REFERENCES Estabelecimento(Id),
+ PRIMARY KEY(IdDivulgacao,IdUsuario,IdEstabelecimento)
+);
+
+CREATE TABLE MarcaPresenca(
+ IdPresenca SERIAL,
+ IdUsuario INT,
+ IdEstabelecimento INT,
+ 
+ FOREIGN KEY(IdUsuario)REFERENCES Usuario(Id),
+ FOREIGN KEY(IdEstabelecimento)REFERENCES Estabelecimento(Id),
+ PRIMARY KEY(IdPresenca,IdUsuario,IdEstabelecimento)
+);
+
+CREATE TABLE EstabelecimentoTemComida(
+ IdComida INT,
+ IdEstabelecimento INT,
+ 
+ FOREIGN KEY(IdComida)REFERENCES Comida(Id),
+ FOREIGN KEY(IdEstabelecimento)REFERENCES Estabelecimento(Id),
+ PRIMARY KEY(IdComida,IdEstabelecimento)
+);
+
+CREATE TABLE IndicaComida( 
+ IdIndicacao SERIAL,
+ IdUsuario INT,
+ IdComida INT,
+ IdEstabelecimento INT,
+ 
+ FOREIGN KEY(IdComida)REFERENCES Comida(Id),
+ FOREIGN KEY(IdEstabelecimento)REFERENCES Estabelecimento(Id),
+ FOREIGN KEY(IdUsuario)REFERENCES Usuario(Id),
+ PRIMARY KEY(IdIndicacao,IdUsuario,IdComida,IdEstabelecimento)
+);
+
+CREATE TABLE EnviaMensagem( 
+ IdMensagem SERIAL,
+ IdRemetente INT,
+ IdDestinatario INT,
+ 
+ FOREIGN KEY(IdRemetente)REFERENCES Usuario(Id),
+ FOREIGN KEY(IdDestinatario)REFERENCES Usuario(Id),
+ PRIMARY KEY(IdMensagem,IdRemetente,IdDestinatario)
+);
+

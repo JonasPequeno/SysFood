@@ -26,7 +26,7 @@ public class UsuarioDao implements UsuarioDaoIF {
 
     @Override
     public List<Usuario> listar() {
-        
+        return null;        
     }
     
 }
