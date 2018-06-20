@@ -1,6 +1,7 @@
 package com.ifpb.model;
 
 import java.util.Objects;
+import sun.security.x509.AlgorithmId;
 
 /**
  *
@@ -14,22 +15,32 @@ public class Usuario extends Endereco{
     private String fotoPerfil;
     private String descricao;
     private String fone;
+    private String senha;
 
     public Usuario() {
     }
     
-    public Usuario(String nome, String email, String profissao, String sexo, String fotoPerfil, String rua, String numero,
-            String cidade, String cep,String descricao, String fone) {
-        super(rua, cidade,numero,cep);        
+    public Usuario(String nome, String email, String profissao, String sexo, String fotoPerfil, String senha,String rua, String numero,
+            String cidade, String cep,String descricao, String fone, String estado) {
+        super(rua, cidade,numero,cep, estado);        
         this.nome = nome;
         this.email = email;
         this.profissao = profissao;
         this.sexo = sexo;
         this.fotoPerfil = fotoPerfil;
+        this.senha = senha;
         this.descricao = descricao;
         this.fone = fone;
     }
 
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+   
     public String getNome() {
         return nome;
     }

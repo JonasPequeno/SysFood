@@ -13,15 +13,17 @@ public abstract class Endereco {
     private String cidade;
     private String numero;
     private String cep;
+    private String estado;
     
     public Endereco(){
     }
     
-    public Endereco(String rua, String cidade, String numero, String cep) {
+    public Endereco(String rua, String cidade, String numero, String cep, String estado) {
         this.rua = rua;
         this.cidade = cidade;
         this.numero = numero;
         this.cep = cep;
+        this.estado = estado;
     }
 
     public String getRua() {
@@ -30,6 +32,14 @@ public abstract class Endereco {
 
     public void setRua(String rua) {
         this.rua = rua;
+    }
+    
+    public String getEstado(){
+        return this.estado;
+    }
+    
+    public void setEstado(String estado){
+        this.estado = estado;
     }
 
     public String getCidade() {
