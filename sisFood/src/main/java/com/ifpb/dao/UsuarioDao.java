@@ -4,6 +4,7 @@ import com.ifpb.factory.Conexao;
 import com.ifpb.interfaces.UsuarioDaoIF;
 import com.ifpb.model.Usuario;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
@@ -19,17 +20,25 @@ public class UsuarioDao implements UsuarioDaoIF {
     public boolean inserir(Usuario usuario) {
         try {
             Connection con = Conexao.getConnection();
-            String sql = String.format("INSERT INTO USUARIO(Nome, Sexo, Email, Foto, Fone, "
+            String sql = "INSERT INTO USUARIO(Nome, Sexo, Email, Foto, Fone, "
                     + "Descricao, Profissao, Cidade, Estado, Cep, Rua, Senha) VALUES ("
-                    + "%s, %c, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",
-                    usuario.getNome(),usuario.getSexo(), usuario.getEmail(), usuario.getFotoPerfil(),
-                    usuario.getFone(), usuario.getDescricao(), usuario.getProfissao(), usuario.getCidade(),
-                    usuario.getEstado(), usuario.getCep(), usuario.getRua(), usuario.getSenha()
-            );
-            
-            Statement stam = con.createStatement();
-            stam.executeUpdate(sql);
-            stam.close();
+                    + "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+            PreparedStatement pstam = con.prepareStatement(sql);
+            pstam.setString(1, usuario.getNome());
+            pstam.setString(2, usuario.getSexo());
+            pstam.setString(3, usuario.getEmail());
+            pstam.setString(4, usuario.getFotoPerfil());
+            pstam.setString(5, usuario.getFone());
+            pstam.setString(6, usuario.getDescricao());
+            pstam.setString(7, usuario.getProfissao());
+            pstam.setString(8, usuario.getCidade());
+            pstam.setString(9, usuario.getEstado());
+            pstam.setString(10, usuario.getCep());
+            pstam.setString(11, usuario.getRua());
+            pstam.setString(12, usuario.getSenha());
+            pstam.execute();
+            pstam.close();
             con.close();            
             return true;
         } catch (SQLException ex) {

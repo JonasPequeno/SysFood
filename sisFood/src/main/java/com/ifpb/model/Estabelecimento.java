@@ -19,8 +19,8 @@ public class Estabelecimento extends Endereco {
    
    public Estabelecimento(){};
    
-   public Estabelecimento(String nome, String foto, String descricao, String fone, LocalDate funcionamento, String tipo, double nota, String rua, String cidade, String numero, String cep) {
-       super(rua, cidade, numero, cep);
+   public Estabelecimento(String nome, String foto, String descricao, String fone, LocalDate funcionamento, String tipo, double nota, String rua, String cidade, String numero, String cep, String estado) {
+       super(rua, cidade, numero, cep, estado);
        this.nome = nome;
        this.foto = foto;
        this.descricao = descricao;
