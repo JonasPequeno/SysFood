@@ -15,7 +15,7 @@ public class Conexao {
     public static Connection getConnection() throws SQLException{
         Connection con = null;
         try {
-            Class.forName("org.postgres.Driver");
+            Class.forName("org.postgresql.Driver");
             String url = "";
             String pass = "";
             String user = "";
