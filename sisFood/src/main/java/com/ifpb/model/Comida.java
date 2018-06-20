@@ -5,16 +5,27 @@ import java.util.Objects;
 
 public class Comida {
     private String nome;
-    private String preco;
-    private int nota;
+    private int id;
+    private double preco;
+    private double nota;
     private String descricao;
 
-    public Comida(String nome, String preco, int nota, String descricao) {
+    public Comida(String nome, double preco, double nota, String descricao) {
         this.nome = nome;
         this.preco = preco;
         this.nota = nota;
         this.descricao = descricao;
     }
+    
+    public Comida( int id , String nome, double preco, double nota, String descricao) {
+        this.nome = nome;
+        this.id = id;
+        this.preco = preco;
+        this.nota = nota;
+        this.descricao = descricao;
+    }
+    
+    public Comida(){};
 
     public String getNome() {
         return nome;
@@ -24,19 +35,27 @@ public class Comida {
         this.nome = nome;
     }
 
-    public String getPreco() {
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
+    public double getPreco() {
         return preco;
     }
 
-    public void setPreco(String preco) {
+    public void setPreco(double preco) {
         this.preco = preco;
     }
 
-    public int getNota() {
+    public double getNota() {
         return nota;
     }
 
-    public void setNota(int nota) {
+    public void setNota(double nota) {
         this.nota = nota;
     }
 
@@ -50,11 +69,12 @@ public class Comida {
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 29 * hash + Objects.hashCode(this.nome);
-        hash = 29 * hash + Objects.hashCode(this.preco);
-        hash = 29 * hash + this.nota;
-        hash = 29 * hash + Objects.hashCode(this.descricao);
+        int hash = 3;
+        hash = 37 * hash + Objects.hashCode(this.nome);
+        hash = 37 * hash + this.id;
+        hash = 37 * hash + (int) (Double.doubleToLongBits(this.preco) ^ (Double.doubleToLongBits(this.preco) >>> 32));
+        hash = 37 * hash + (int) (Double.doubleToLongBits(this.nota) ^ (Double.doubleToLongBits(this.nota) >>> 32));
+        hash = 37 * hash + Objects.hashCode(this.descricao);
         return hash;
     }
 
