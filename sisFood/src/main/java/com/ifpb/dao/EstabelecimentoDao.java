@@ -62,7 +62,7 @@ public class EstabelecimentoDao implements EstabelecimentoDaoIF{
             return true;
             
         } catch (SQLException ex) {
-            System.out.println("Erro na conexão: ".concat(ex.getMessage()));;
+            System.out.println("Erro na conexão: ".concat(ex.getMessage()));
         }
         return false;
         
@@ -71,6 +71,39 @@ public class EstabelecimentoDao implements EstabelecimentoDaoIF{
     @Override
     public boolean editar(String email, Estabelecimento e) {
         
+        try {
+            
+            Connection con = Conexao.getConnection();
+            String sql="UPDATE Estabelecimento SET nome=?, nota=?, foto=?, fone=?, "
+                    + "tipo=?, funcionario=?, descricao=?, userAdd=?, cidade=?, estado=?, "
+                    + "cep=?, rua=?, numero=? WHERE email=?";
+            PreparedStatement stmt = con.prepareStatement(sql);
+            
+            stmt.setString(1, e.getNome());
+            stmt.setDouble(2, e.getNota());
+            stmt.setString(3, e.getFoto());
+            stmt.setString(4, e.getFone());
+            stmt.setString(5, e.getTipo());
+            stmt.setDate(6, Date.valueOf(e.getFuncionamento()));
+            stmt.setString(7, e.getDescricao());
+            stmt.setString(8, e.getUserAdd());
+            stmt.setString(9, e.getCidade());
+            stmt.setString(10, e.getEstado());
+            stmt.setString(11, e.getCep());
+            stmt.setString(12, e.getRua());
+            stmt.setString(13, e.getNumero());
+            stmt.setString(14, email);
+            
+            stmt.executeUpdate();
+            stmt.close();
+            con.close();
+            return true;
+            
+            
+        } catch (SQLException ex) {
+            System.out.println("Erro na conexão: ".concat(ex.getMessage()));
+        }
+        return false;
        
            
     }
