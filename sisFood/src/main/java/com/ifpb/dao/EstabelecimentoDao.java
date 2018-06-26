@@ -32,7 +32,7 @@ public class EstabelecimentoDao implements EstabelecimentoDaoIF{
     
 
     @Override
-    public boolean inserir(String email, Estabelecimento e) {
+    public boolean Inserir(String email, Estabelecimento e) {
         
         try {
             
@@ -69,7 +69,7 @@ public class EstabelecimentoDao implements EstabelecimentoDaoIF{
     }
 
     @Override
-    public boolean editar(String email, Estabelecimento e) {
+    public boolean Editar(String email, Estabelecimento e) {
         
         try {
             
@@ -109,7 +109,7 @@ public class EstabelecimentoDao implements EstabelecimentoDaoIF{
     }
 
     @Override
-    public boolean remover(String email, Estabelecimento e) {
+    public boolean Remover(String email, Estabelecimento e) {
         
          try {
             
@@ -133,7 +133,7 @@ public class EstabelecimentoDao implements EstabelecimentoDaoIF{
     }
 
     @Override
-    public List<Estabelecimento> listar(String email) {
+    public List<Estabelecimento> Listar(String email) {
         
         List<Estabelecimento> listaEstab = new ArrayList<>();
       
