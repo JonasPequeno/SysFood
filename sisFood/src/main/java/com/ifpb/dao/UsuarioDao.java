@@ -51,10 +51,11 @@ public class UsuarioDao implements UsuarioDaoIF {
     @Override
     public boolean editar(Usuario usuario) {
         try {
+            System.out.println("Dao :"+usuario.toString());
             Connection con = Conexao.getConnection();
             String sql = "UPDATE Usuario SET"
-                    + "Nome = ?, Sexo = ?, Email = ?, Foto = ?, Fone = ?, Descricao = ?"
-                    + "Profissao = ?, Cidade = ?, Estado = ?, Rua = ?, Senha = ?"
+                    + "Nome = ?, Sexo = ?, Email = ?, Foto = ?, Fone = ?, Descricao = ?,"
+                    + "Profissao = ?, Cidade = ?, Estado = ?, cep = ?, Rua = ?, Senha = ?"
                     + "WHERE Email = ? and Senha = ?";
             PreparedStatement pstam = con.prepareStatement(sql);
             pstam.setString(1, usuario.getNome());
@@ -104,7 +105,7 @@ public class UsuarioDao implements UsuarioDaoIF {
         try {
             Connection con = Conexao.getConnection();
             String sql = "SELECT Nome, Sexo, Email, Foto, Fone, Descricao, Profissao,"
-                    + "Cidade, Estado, Rua, Cep,Numero"
+                    + "Cidade, Estado, Rua, Cep"
                     + " FROM USUARIO";
             Statement state = con.createStatement(
                     ResultSet.CONCUR_UPDATABLE,
@@ -124,7 +125,6 @@ public class UsuarioDao implements UsuarioDaoIF {
                 u.setProfissao(result.getString("profissao"));
                 u.setCidade(result.getString("cidade"));
                 u.setEstado(result.getString("estado"));
-                u.setNumero(result.getString("numero"));
                 u.setCep(result.getString("cep"));
                 u.setRua(result.getString("rua"));
                 usuarios.add(u);

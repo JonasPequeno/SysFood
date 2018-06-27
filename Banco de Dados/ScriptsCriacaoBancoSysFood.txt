@@ -43,12 +43,13 @@ CREATE TABLE Comida(
 );
 
 CREATE TABLE Amizade(
- EmailUsuarioRemetente VARCHAR(100),
- EmailUsuarioDestinario VARCHAR(100),
+ Status boolean ,
+ UserRemetente VARCHAR(100),
+ UserDestinatario VARCHAR(100),
 
- FOREIGN KEY(EmailUsuarioRemetente)REFERENCES Usuario(Email),
- FOREIGN KEY(EmailUsuarioDestinario)REFERENCES Usuario(Email),
- PRIMARY KEY(EmailUsuarioRemetente,EmailUsuarioDestinario)
+ FOREIGN KEY(UserRemetente)REFERENCES Usuario(Email),
+ FOREIGN KEY(UserDestinatario)REFERENCES Usuario(Email),
+ PRIMARY KEY(UserRemetente,UserDestinatario)
 );
 
 CREATE TABLE AvaliaComida(
@@ -64,7 +65,7 @@ CREATE TABLE AvaliaComida(
 
 CREATE TABLE AvaliaEstabelecimento(
  EmailUsuario VARCHAR(100),
- IdEstabelecimento INT,
+ IdEstabelecimento SERIAL,
  Avaliacao REAL,
  Comentario VARCHAR(50),
 
@@ -104,6 +105,7 @@ CREATE TABLE EstabelecimentoTemComida(
 
 CREATE TABLE IndicaComida( 
  IdIndicacao SERIAL,
+ IdComida INT,
  EmailIndicado VARCHAR(100),
  EmailIndicacao VARCHAR(100),
  IdEstabelecimento INT,
@@ -112,7 +114,7 @@ CREATE TABLE IndicaComida(
  FOREIGN KEY(IdEstabelecimento)REFERENCES Estabelecimento(Id),
  FOREIGN KEY(EmailIndicado)REFERENCES Usuario(Email),
  FOREIGN KEY(EmailIndicacao)REFERENCES Usuario(Email),
- PRIMARY KEY(IdIndicacao,IdUsuario,IdComida,IdEstabelecimento)
+ PRIMARY KEY(IdIndicacao)
 );
 
 CREATE TABLE EnviaMensagem( 
@@ -124,4 +126,5 @@ CREATE TABLE EnviaMensagem(
  FOREIGN KEY(EmailDestinatario)REFERENCES Usuario(Email),
  PRIMARY KEY(IdMensagem,EmailRemetente,EmailDestinatario)
 );
+
 

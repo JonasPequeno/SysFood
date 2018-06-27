@@ -16,9 +16,9 @@ public class Conexao {
         Connection con = null;
         try {
             Class.forName("org.postgresql.Driver");
-            String url = "";
+            String url = "jdbc:postgresql://localhost:5432/sysFood";
             String pass = "";
-            String user = "";
+            String user = "postgres";
             try{
                con = DriverManager.getConnection(url,user,pass);
             } catch(SQLException ex){    

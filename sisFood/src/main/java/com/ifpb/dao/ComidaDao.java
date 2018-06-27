@@ -64,8 +64,9 @@ public class ComidaDao implements ComidaDaoIF{
     public boolean remover(Comida comida) {
         try {
             Connection con = Conexao.getConnection();
-            String sql = "DELETE COMIDA WHERE Id = ?";
+            String sql = "DELETE FROM COMIDA WHERE Id = ?";
             PreparedStatement pstm = con.prepareStatement(sql);
+            System.out.println(comida.getId());
             pstm.setInt(1, comida.getId());
             pstm.execute();
             pstm.close();
