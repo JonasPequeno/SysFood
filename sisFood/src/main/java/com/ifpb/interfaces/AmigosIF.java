@@ -8,8 +8,8 @@ import java.util.List;
  */
 public interface AmigosIF {
     
-    public List<String> listarAmigos();
-    public boolean excluirAmigo();
+    public List<String> listarAmigos(String email);
+    public boolean excluirAmigo(String userRemetente, String userDestinatario);
     
     
 }

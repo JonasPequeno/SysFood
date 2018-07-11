@@ -22,11 +22,12 @@ public class SolicitacaoAmizadeDao implements SolicitaAmizade{
     public boolean enviaSolicitacao(String userRemetente, String userDestinatario) {
         try {
             Connection con = Conexao.getConnection();
-            String sql = "INSERT INTO Amizade(UserRemetente, UserDestinatario)"
-                    + "VALUES(?,?,false)";
+            String sql = "INSERT INTO Amizade(UserRemetente, UserDestinatario, Status)"
+                    + "VALUES(?,?,?)";
             PreparedStatement pstate = con.prepareStatement(sql);
             pstate.setString(1,userRemetente );
             pstate.setString(2,userDestinatario);
+            pstate.setBoolean(3,false);
             pstate.execute();
             pstate.close();
             con.close();
@@ -99,6 +100,5 @@ public class SolicitacaoAmizadeDao implements SolicitaAmizade{
             return null;
         }
     }
-    
     
 }

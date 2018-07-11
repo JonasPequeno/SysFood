@@ -19,6 +19,10 @@ import java.util.logging.Logger;
  */
 public class ComidaDao implements ComidaDaoIF{
 
+    public ComidaDao() {
+    }
+  
+
     @Override
     public boolean inserir(Comida comida) {
         try {
@@ -63,6 +67,7 @@ public class ComidaDao implements ComidaDaoIF{
     @Override
     public boolean remover(Comida comida) {
         try {
+            System.out.println(comida.getId());
             Connection con = Conexao.getConnection();
             String sql = "DELETE FROM COMIDA WHERE Id = ?";
             PreparedStatement pstm = con.prepareStatement(sql);
@@ -99,7 +104,7 @@ public class ComidaDao implements ComidaDaoIF{
                 c.setDescricao(result.getString("descricao"));
                 c.setPreco(result.getDouble("preco"));
                 c.setNota(result.getDouble("nota"));
-                comidas.add(c);                
+                comidas.add(c);   
             }
             return comidas;
             

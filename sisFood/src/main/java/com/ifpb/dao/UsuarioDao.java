@@ -53,10 +53,11 @@ public class UsuarioDao implements UsuarioDaoIF {
         try {
             System.out.println("Dao :"+usuario.toString());
             Connection con = Conexao.getConnection();
-            String sql = "UPDATE Usuario SET"
-                    + "Nome = ?, Sexo = ?, Email = ?, Foto = ?, Fone = ?, Descricao = ?,"
-                    + "Profissao = ?, Cidade = ?, Estado = ?, cep = ?, Rua = ?, Senha = ?"
-                    + "WHERE Email = ? and Senha = ?";
+            String sql = "UPDATE USUARIO SET"
+                    + "NOME = ? , SEXO = ? , EMAIL = ? , FOTO = ? ,"
+                    + "FONE = ?, DESCRICAO = ? , PROFISSAO = ? ,"
+                    + "CIDADE = ? , ESTADO = ? , CEP = ? , RUA = ? , "
+                    + "SENHA = ? WHERE EMAIL = ? AND SENHA = ?";
             PreparedStatement pstam = con.prepareStatement(sql);
             pstam.setString(1, usuario.getNome());
             pstam.setString(2, usuario.getSexo());
