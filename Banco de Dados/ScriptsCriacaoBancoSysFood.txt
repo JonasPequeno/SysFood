@@ -1,8 +1,8 @@
 CREATE TABLE Usuario(
- Id SERIAL,
+ Id SERIAL PRIMARY KEY,
  Nome VARCHAR(100) NOT NULL,
  Sexo VARCHAR(1),
- Email VARCHAR(100) PRIMARY KEY,
+ Email VARCHAR(100) UNIQUE,
  Foto VARCHAR(100) NOT NULL,
  Fone VARCHAR(25),
  Descricao VARCHAR(100),
@@ -24,14 +24,14 @@ CREATE TABLE Estabelecimento (
  Tipo VARCHAR(50) NOT NULL,
  Funcionamento VARCHAR(100),
  Descricao VARCHAR(100),
- UserAdd VARCHAR(100),
+ UserAdd INT,
  Cidade VARCHAR(50) NOT NULL,
  Estado VARCHAR(50) NOT NULL,
  CEP VARCHAR(10) NOT NULL,
  Rua VARCHAR(50) NOT NULL,
  Numero INTEGER NOT NULL,
 
- FOREIGN KEY(UserAdd)REFERENCES Usuario(Email)
+ FOREIGN KEY(UserAdd)REFERENCES Usuario(ID)
 );
 
 CREATE TABLE Comida(
@@ -44,54 +44,54 @@ CREATE TABLE Comida(
 
 CREATE TABLE Amizade(
  Status boolean ,
- UserRemetente VARCHAR(100),
- UserDestinatario VARCHAR(100),
+ UserRemetente INT,
+ UserDestinatario INT,
 
- FOREIGN KEY(UserRemetente)REFERENCES Usuario(Email),
- FOREIGN KEY(UserDestinatario)REFERENCES Usuario(Email),
+ FOREIGN KEY(UserRemetente)REFERENCES Usuario(ID),
+ FOREIGN KEY(UserDestinatario)REFERENCES Usuario(ID),
  PRIMARY KEY(UserRemetente,UserDestinatario)
 );
 
 CREATE TABLE AvaliaComida(
- EmailUsuario VARCHAR(100),
+ Usuario INT,
  IdComida INTEGER,
  Avaliacao REAL,
  Comentario VARCHAR(50),
 
- FOREIGN KEY(EmailUsuario)REFERENCES Usuario(Email),
+ FOREIGN KEY(Usuario)REFERENCES Usuario(ID),
  FOREIGN KEY(IdComida)REFERENCES Comida(Id),
- PRIMARY KEY(EmailUsuario,IdComida)
+ PRIMARY KEY(Usuario,IdComida)
 );
 
 CREATE TABLE AvaliaEstabelecimento(
- EmailUsuario VARCHAR(100),
+ Usuario INT,
  IdEstabelecimento SERIAL,
  Avaliacao REAL,
  Comentario VARCHAR(50),
 
- FOREIGN KEY(EmailUsuario)REFERENCES Usuario(Email),
+ FOREIGN KEY(Usuario)REFERENCES Usuario(ID),
  FOREIGN KEY(IdEstabelecimento)REFERENCES Estabelecimento(Id),
- PRIMARY KEY(EmailUsuario,IdEstabelecimento)
+ PRIMARY KEY(Usuario,IdEstabelecimento)
 );
 
 CREATE TABLE DivulgaEstabelecimento(
  IdDivulgacao SERIAL,
- EmailUsuario VARCHAR(100),
+ Usuario INT,
  IdEstabelecimento INT,
  
- FOREIGN KEY(EmailUsuario)REFERENCES Usuario(Email),
+ FOREIGN KEY(Usuario)REFERENCES Usuario(ID),
  FOREIGN KEY(IdEstabelecimento)REFERENCES Estabelecimento(Id),
- PRIMARY KEY(IdDivulgacao,EmailUsuario,IdEstabelecimento)
+ PRIMARY KEY(IdDivulgacao,Usuario,IdEstabelecimento)
 );
 
 CREATE TABLE MarcaPresenca(
  IdPresenca SERIAL,
- EmailUsuario VARCHAR(100),
+ Usuario INT,
  IdEstabelecimento INT,
  
- FOREIGN KEY(EmailUsuario)REFERENCES Usuario(Email),
+ FOREIGN KEY(Usuario)REFERENCES Usuario(ID),
  FOREIGN KEY(IdEstabelecimento)REFERENCES Estabelecimento(Id),
- PRIMARY KEY(IdPresenca,EmailUsuario,IdEstabelecimento)
+ PRIMARY KEY(IdPresenca,Usuario,IdEstabelecimento)
 );
 
 CREATE TABLE EstabelecimentoTemComida(
@@ -106,24 +106,24 @@ CREATE TABLE EstabelecimentoTemComida(
 CREATE TABLE IndicaComida( 
  IdIndicacao SERIAL,
  IdComida INT,
- EmailIndicado VARCHAR(100),
- EmailIndicacao VARCHAR(100),
+ EmailIndicado INT,
+ EmailIndicacao INT,
  IdEstabelecimento INT,
  
  FOREIGN KEY(IdComida)REFERENCES Comida(Id),
  FOREIGN KEY(IdEstabelecimento)REFERENCES Estabelecimento(Id),
- FOREIGN KEY(EmailIndicado)REFERENCES Usuario(Email),
- FOREIGN KEY(EmailIndicacao)REFERENCES Usuario(Email),
+ FOREIGN KEY(EmailIndicado)REFERENCES Usuario(ID),
+ FOREIGN KEY(EmailIndicacao)REFERENCES Usuario(ID),
  PRIMARY KEY(IdIndicacao)
 );
 
 CREATE TABLE EnviaMensagem( 
  IdMensagem SERIAL,
- EmailDestinatario VARCHAR(100),
- EmailRemetente VARCHAR(100),
+ EmailDestinatario INT,
+ EmailRemetente INT,
 
- FOREIGN KEY(EmailRemetente)REFERENCES Usuario(Email),
- FOREIGN KEY(EmailDestinatario)REFERENCES Usuario(Email),
+ FOREIGN KEY(EmailRemetente)REFERENCES Usuario(ID),
+ FOREIGN KEY(EmailDestinatario)REFERENCES Usuario(ID),
  PRIMARY KEY(IdMensagem,EmailRemetente,EmailDestinatario)
 );
 
