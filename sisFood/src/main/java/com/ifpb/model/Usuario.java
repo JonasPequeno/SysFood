@@ -148,7 +148,8 @@ public class Usuario extends Endereco{
 
     @Override
     public String toString() {
-        return "Usuario{" + "nome=" + nome + ", email=" + email + ", profissao=" + profissao + ", sexo=" + sexo + ", fotoPerfil=" + fotoPerfil + ", descricao=" + descricao + ", fone=" + fone + '}';
+        return "Usuario{" + "nome=" + nome + ", email=" + email + ", profissao=" + profissao + ", sexo=" + sexo + ", fotoPerfil=" + fotoPerfil + ", descricao=" + descricao + ", fone=" + fone + ", senha=" + senha + '}';
     }
+
 
 }

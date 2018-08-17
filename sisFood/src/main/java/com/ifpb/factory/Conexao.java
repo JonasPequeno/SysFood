@@ -21,14 +21,14 @@ public class Conexao {
             String user = "postgres";
             try{
                con = DriverManager.getConnection(url,user,pass);
-            } catch(SQLException ex){    
+            } catch(SQLException ex){
                 System.out.println("ERRO AO CONECTAR "+ ex.getMessage());
                 return null;
-            }            
+            }
         } catch (ClassNotFoundException ex) {
                 System.out.println("ERRO AO CARREGAR O DRIVER "+ ex.getMessage());
                 return null;
         }
         return con;
-    } 
+    }
 }

@@ -127,4 +127,15 @@ CREATE TABLE EnviaMensagem(
  PRIMARY KEY(IdMensagem,EmailRemetente,EmailDestinatario)
 );
 
+create table Seguir (
+
+ id SERIAL PRIMARY KEY,
+ status BOOLEAN,
+ userRemetente INTEGER NOT NULL,
+ userDestinatario INTEGER NOT NULL,
+
+ FOREIGN KEY (userRemetente) REFERENCES Usuario(id),
+ FOREIGN KEY (userDestinatario) REFERENCES Usuario(id)
+);
+
 

@@ -50,29 +50,26 @@ public class UsuarioDao implements UsuarioDaoIF {
     }
     @Override
     public boolean editar(Usuario usuario) {
-        try {
+        try {      
+            System.out.println("Usuario" + usuario);
             System.out.println("Dao :"+usuario.toString());
             Connection con = Conexao.getConnection();
-            String sql = "UPDATE USUARIO SET"
-                    + "NOME = ? , SEXO = ? , EMAIL = ? , FOTO = ? ,"
+            String sql = "UPDATE USUARIO SET "
+                    + "NOME = ? , SEXO = ? ,FOTO = ? ,"
                     + "FONE = ?, DESCRICAO = ? , PROFISSAO = ? ,"
-                    + "CIDADE = ? , ESTADO = ? , CEP = ? , RUA = ? , "
-                    + "SENHA = ? WHERE EMAIL = ? AND SENHA = ?";
+                    + "CIDADE = ? , ESTADO = ? , CEP = ? , RUA = ? WHERE EMAIL = ?";
             PreparedStatement pstam = con.prepareStatement(sql);
             pstam.setString(1, usuario.getNome());
             pstam.setString(2, usuario.getSexo());
-            pstam.setString(3, usuario.getEmail());
-            pstam.setString(4, usuario.getFotoPerfil());
-            pstam.setString(5, usuario.getFone());
-            pstam.setString(6, usuario.getDescricao());
-            pstam.setString(7, usuario.getProfissao());
-            pstam.setString(8, usuario.getCidade());
-            pstam.setString(9, usuario.getEstado());
-            pstam.setString(10, usuario.getCep());
-            pstam.setString(11, usuario.getRua());
-            pstam.setString(12, usuario.getSenha());
-            pstam.setString(13, usuario.getEmail());
-            pstam.setString(14, usuario.getSenha());
+            pstam.setString(3, usuario.getFotoPerfil());
+            pstam.setString(4, usuario.getFone());
+            pstam.setString(5, usuario.getDescricao());
+            pstam.setString(6, usuario.getProfissao());
+            pstam.setString(7, usuario.getCidade());
+            pstam.setString(8, usuario.getEstado());
+            pstam.setString(9, usuario.getCep());
+            pstam.setString(10, usuario.getRua());
+            pstam.setString(11, usuario.getEmail());
             pstam.executeUpdate();
             pstam.close();
             con.close();            
