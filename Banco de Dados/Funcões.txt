@@ -1,47 +1,117 @@
---FUNÇÃO PARA PEGAR AS SOLICITAÇÕES--
-create or replace function getSolicitacoes(varchar)
-returns table(solicitacoes varchar(100)) as
-$$ 
- declare 
-  email alias for $1;
- begin
-  return query (
-	select a.emailUsuarioDestinario
-	from amizade a
-	where a.status is false and a.emailUsuarioRemetente ilike email
-  );
- end
-$$language 'plpgsql';
-
---FUNÇÃO PARA PEGAR AS AMIGOS--
-create or replace function getAmigos(varchar)
-returns table(amigo varchar(100)) as
-$$ 
- declare 
-  email alias for $1;
- begin
-  return query (
-	select a.emailUsuarioDestinario
-	from amizade a
-	where a.status is false and a.emailUsuarioRemetente ilike email
-  );
- end
-$$language 'plpgsql';
-
-
-
-CREATE OR REPLACE FUNCTION getComidaEstabe(int)
-RETURNS TABLE( id INTEGER, nome VARCHAR, nota REAL, descricao VARCHAR, 
- preco REAL) AS
+--funcção para recuperar os amigos--
+CREATE OR REPLACE FUNCTION getAmigos(VARCHAR)
+RETURNS TABLE (EMAIL VARCHAR(50))
+AS 
 $$
  DECLARE
-  idEsta ALIAS FOR $1;
+	email ALIAS FOR $1;
  BEGIN
- return QUERY(
-	SELECT c.id ,c.nome, c.nota, c.descricao, c.preco
-	FROM estabelecimentoTemComida es , comida c
-	WHERE es.idEstabelecimento = idEsta and es.idComida = c.id
-       );
- END;
-$$language 'plpgsql'
+	return query (
+		SELECT a.userDestinatario
+		FROM Amizade a
+		WHERE a.userRemetente ilike email and a.estado ilike 'ACEITO'
+	);
+	
+ END
+$$ LANGUAGE PLPGSQL;
+
+--funcção para enviar solicitações de amizade--
+CREATE OR REPLACE FUNCTION enviaSolicitacao(VARCHAR, VARCHAR)
+RETURNS VOID
+AS 
+$$
+ DECLARE
+	remetente ALIAS FOR $1;
+	destinatario ALIAS FOR $2;
+	
+ BEGIN
+	
+	INSERT INTO Amizade(estado, userRemetente, userDestinatario) VALUES('PENDENTE', remetente, destinatario);
+	INSERT INTO Amizade(estado, userRemetente, userDestinatario) VALUES('PENDENTE', destinatario, remetente);
+	
+ END
+$$ LANGUAGE PLPGSQL;
+
+
+--funcção para aceitar as solicitaçõs de amizade--
+CREATE OR REPLACE FUNCTION aceitarSolicitacao(VARCHAR, VARCHAR)
+RETURNS VOID
+AS 
+$$
+ DECLARE
+	remetente ALIAS FOR $1;
+	destinatario ALIAS FOR $2;
+	
+ BEGIN
+	UPDATE AMIZADE SET ESTADO = 'ACEITO' WHERE userRemetente ilike remetente and userDestinatario ilike destinatario;
+	UPDATE AMIZADE SET ESTADO = 'ACEITO' WHERE userDestinatario ilike remetente AND userRemetente ilike destinatario; 
+	
+ END
+$$ LANGUAGE PLPGSQL;
+
+
+--funcção para recusar as solicitações de amizade--
+CREATE OR REPLACE FUNCTION recusarSolicitacao(VARCHAR, VARCHAR)
+RETURNS VOID
+AS 
+$$
+ DECLARE
+	remetente ALIAS FOR $1;
+	destinatario ALIAS FOR $2;
+		
+ BEGIN
+	UPDATE  AMIZADE SET estado = 'RECUSADO' WHERE userRemetente ilike remetente and userDestinatario ilike destinatario;
+	UPDATE  AMIZADE SET estado = 'RECUSADO' WHERE userDestinatario ilike remetente AND userRemetente ilike destinatario;
+	
+ END
+$$ LANGUAGE PLPGSQL;
+
+--funcção para excuir um amigo--
+CREATE OR REPLACE FUNCTION excluirAmigo(VARCHAR, VARCHAR)
+RETURNS VOID
+AS 
+$$
+ DECLARE
+	remetente ALIAS FOR $1;
+	destinatario ALIAS FOR $2;
+		
+ BEGIN
+	DELETE FROM AMIZADE WHERE userRemetente ilike remetente and userDestinatario ilike destinatario AND estado = 'ACEITO';
+	DELETE FROM AMIZADE WHERE userDestinatario ilike remetente AND userRemetente ilike destinatario AND estado = 'ACEITO';
+	
+ END
+$$ LANGUAGE PLPGSQL;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

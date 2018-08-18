@@ -27,7 +27,7 @@ public class AmigosDao implements AmigosIF{
     public boolean excluirAmigo(String userRemetente, String userDestinatario) {
         try {
             Connection con = Conexao.getConnection();
-            String sql = "DELETE FROM Amizade a WHERE a.userRemetente = ? and userDestinatario = ? and status is true";
+            String sql = "SELECT excluirAmigo(?, ?)";
             PreparedStatement pstate = con.prepareStatement(sql);
             
             pstate.setString(1,userRemetente);
@@ -50,9 +50,12 @@ public class AmigosDao implements AmigosIF{
         ArrayList<String> amigos = new ArrayList<>();
         try {
             Connection con = Conexao.getConnection();
-            String sql = "SELECT * FROM getAmigos g WHERE g.userRemetente ILIKE ? ";
+            String sql = "SELECT * FROM getAmigos(?)";
             
-            Statement state = con.createStatement();
+            PreparedStatement state = con.prepareCall(sql);
+            
+            state.setString(1, email);
+            
             ResultSet result = state.executeQuery(sql);
             while(result.next()){
                amigos.add(result.getString("userDestinatario"));
@@ -65,6 +68,68 @@ public class AmigosDao implements AmigosIF{
             System.out.println("ERRO AO BUSCAR AMIGOS :" + ex.getMessage());
             return null;
         }       
+    }
+
+    @Override
+    public boolean enviarSolicitacao(String userRemetente, String userDestinatario) {
+        try {
+            Connection con = Conexao.getConnection();
+            String sql= "SELECT enviaSolicitacao(?, ?)";
+            
+            PreparedStatement state = con.prepareStatement(sql);
+            state.setString(1, userRemetente);
+            state.setString(2, userDestinatario);
+            state.executeQuery();
+            state.close();
+            con.close();
+            return true;
+            
+        } catch (SQLException ex) {
+            System.out.println("ERRRO AO ENVIAR SOLICITAÇAO : " +ex.getMessage());
+            return false;
+        }
+       
+    }
+
+    @Override
+    public boolean aceitarAmizade(String userRemetente, String userDestinatario){
+        try {
+            Connection con = Conexao.getConnection();
+            String sql = "aceitarSolicitacao(?, ?)";
+            PreparedStatement state = con.prepareStatement(sql);
+            state.setString(1, userRemetente);
+            state.setString(2, userDestinatario);
+            state.executeQuery();
+            state.close();
+            con.close();
+            return true;
+                    
+        } catch (SQLException ex) {
+            System.out.println("ERRO AO ACEITAR AMIZADE : "+ ex.getMessage() );
+            return false;
+        }
+    }
+
+    @Override
+    public boolean recusarSolicitacao(String userRemetente, String userDestinatario) {
+        Connection con;
+        try {
+            con = Conexao.getConnection();
+            String sql = "recusarSolicitacao(?, ?)";
+            PreparedStatement state = con.prepareStatement(sql);
+            state.setString(1, userRemetente);
+            state.setString(2, userDestinatario);
+            state.executeQuery();
+            state.close();
+            con.close();
+            return true;
+            
+        } catch (SQLException ex) {
+            System.out.println("ERRO AO RECUSAR SOLICITAÇAO : " +ex.getMessage());
+            return false;
+        }
+            
+        
     }
 
     

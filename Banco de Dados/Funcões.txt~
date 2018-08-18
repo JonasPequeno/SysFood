@@ -1,0 +1,47 @@
+--FUNÇÃO PARA PEGAR AS SOLICITAÇÕES--
+create or replace function getSolicitacoes(varchar)
+returns table(solicitacoes varchar(100)) as
+$$ 
+ declare 
+  email alias for $1;
+ begin
+  return query (
+	select a.emailUsuarioDestinario
+	from amizade a
+	where a.status is false and a.emailUsuarioRemetente ilike email
+  );
+ end
+$$language 'plpgsql';
+
+--FUNÇÃO PARA PEGAR AS AMIGOS--
+create or replace function getAmigos(varchar)
+returns table(amigo varchar(100)) as
+$$ 
+ declare 
+  email alias for $1;
+ begin
+  return query (
+	select a.emailUsuarioDestinario
+	from amizade a
+	where a.status is false and a.emailUsuarioRemetente ilike email
+  );
+ end
+$$language 'plpgsql';
+
+
+
+CREATE OR REPLACE FUNCTION getComidaEstabe(int)
+RETURNS TABLE( id INTEGER, nome VARCHAR, nota REAL, descricao VARCHAR, 
+ preco REAL) AS
+$$
+ DECLARE
+  idEsta ALIAS FOR $1;
+ BEGIN
+ return QUERY(
+	SELECT c.id ,c.nome, c.nota, c.descricao, c.preco
+	FROM estabelecimentoTemComida es , comida c
+	WHERE es.idEstabelecimento = idEsta and es.idComida = c.id
+       );
+ END;
+$$language 'plpgsql'
+
