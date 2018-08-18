@@ -82,6 +82,95 @@ $$
  END
 $$ LANGUAGE PLPGSQL;
 
+--DAO SEGUIR --
+
+--funcção para recuperar os amigos--
+CREATE OR REPLACE FUNCTION getSeguidores(VARCHAR)
+RETURNS TABLE (EMAIL VARCHAR(50))
+AS 
+$$
+ DECLARE
+	email ALIAS FOR $1;
+ BEGIN
+	return query (
+		SELECT a.userDestinatario
+		FROM seguir s
+		WHERE s.userRemetente ilike email and s.estado ilike 'ACEITO'
+	);
+	
+ END
+$$ LANGUAGE PLPGSQL;
+
+--funcção para enviar solicitações de amizade--
+CREATE OR REPLACE FUNCTION enviaSolicitacaoSeguir(VARCHAR, VARCHAR)
+RETURNS VOID
+AS 
+$$
+ DECLARE
+	remetente ALIAS FOR $1;
+	destinatario ALIAS FOR $2;
+	
+ BEGIN
+	
+	INSERT INTO Seguir(estado, userRemetente, userDestinatario) VALUES('PENDENTE', remetente, destinatario);
+	INSERT INTO Seguir(estado, userRemetente, userDestinatario) VALUES('PENDENTE', destinatario, remetente);
+	
+ END
+$$ LANGUAGE PLPGSQL;
+
+
+--funcção para aceitar as solicitaçõs de amizade--
+CREATE OR REPLACE FUNCTION aceitarSolicitacaoSeguir(VARCHAR, VARCHAR)
+RETURNS VOID
+AS 
+$$
+ DECLARE
+	remetente ALIAS FOR $1;
+	destinatario ALIAS FOR $2;
+	
+ BEGIN
+	UPDATE Seguir SET ESTADO = 'ACEITO' WHERE userRemetente ilike remetente and userDestinatario ilike destinatario;
+	UPDATE Seguir SET ESTADO = 'ACEITO' WHERE userDestinatario ilike remetente AND userRemetente ilike destinatario; 
+	
+ END
+$$ LANGUAGE PLPGSQL;
+
+
+--funcção para recusar as solicitações de amizade--
+CREATE OR REPLACE FUNCTION recusarSolicitacaoSeguir(VARCHAR, VARCHAR)
+RETURNS VOID
+AS 
+$$
+ DECLARE
+	remetente ALIAS FOR $1;
+	destinatario ALIAS FOR $2;
+		
+ BEGIN
+	UPDATE  Seguir SET estado = 'RECUSADO' WHERE userRemetente ilike remetente and userDestinatario ilike destinatario;
+	UPDATE  Seguir SET estado = 'RECUSADO' WHERE userDestinatario ilike remetente AND userRemetente ilike destinatario;
+	
+ END
+$$ LANGUAGE PLPGSQL;
+
+--funcção para excuir um amigo--
+CREATE OR REPLACE FUNCTION excluirSolicitacaoSeguir(VARCHAR, VARCHAR)
+RETURNS VOID
+AS 
+$$
+ DECLARE
+	remetente ALIAS FOR $1;
+	destinatario ALIAS FOR $2;
+		
+ BEGIN
+	DELETE FROM Seguir WHERE userRemetente ilike remetente and userDestinatario ilike destinatario AND estado = 'ACEITO';
+	DELETE FROM Seguir WHERE userDestinatario ilike remetente AND userRemetente ilike destinatario AND estado = 'ACEITO';
+	
+ END
+$$ LANGUAGE PLPGSQL;
+
+
+
+
 
 
 

@@ -95,7 +95,7 @@ public class AmigosDao implements AmigosIF{
     public boolean aceitarAmizade(String userRemetente, String userDestinatario){
         try {
             Connection con = Conexao.getConnection();
-            String sql = "aceitarSolicitacao(?, ?)";
+            String sql = "SELECT aceitarSolicitacao(?, ?)";
             PreparedStatement state = con.prepareStatement(sql);
             state.setString(1, userRemetente);
             state.setString(2, userDestinatario);
