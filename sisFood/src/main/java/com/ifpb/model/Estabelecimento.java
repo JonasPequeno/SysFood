@@ -1,6 +1,7 @@
 
 package com.ifpb.model;
 
+import java.sql.Time;
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -14,42 +15,45 @@ public class Estabelecimento extends Endereco {
    private String foto;
    private String descricao;
    private String fone;   
-   private LocalDate funcionamento;
+   private String horaAbertura;
+   private String horaFechamento;
    private String tipo;
    private double nota;
    private String userAdd;
+
 
     public Estabelecimento() {
     }
    
    
-   public Estabelecimento(String nome, String foto, String descricao, String fone, LocalDate funcionamento, String tipo, double nota, String rua, String cidade, String numero, String cep, String estado) {
+   public Estabelecimento(String nome, String foto, String descricao, String fone,
+           String horaAbertura, String horaFechamento, String tipo, double nota, String rua, String cidade, int numero, String cep, String estado) {
        super(rua, cidade, numero, cep, estado);
        this.nome = nome;
        this.foto = foto;
        this.descricao = descricao;
        this.fone = fone;
-       this.funcionamento = funcionamento;
+       this.horaAbertura = horaAbertura;
+       this.horaFechamento = horaFechamento;
        this.tipo = tipo;
        this.nota = nota;
    }
 
-    public Estabelecimento(int id, String nome, String foto, String descricao, String fone, LocalDate funcionamento, String tipo, double nota, String userAdd, String rua, String cidade, String numero, String cep, String estado) {
+    public Estabelecimento(int id, String nome, String foto, String descricao, String fone,
+            String horaAbertura, String horaFechamento, String tipo, double nota, String userAdd, String rua, String cidade, int numero, String cep, String estado) {
         super(rua, cidade, numero, cep, estado);
         this.id = id;
         this.nome = nome;
         this.foto = foto;
         this.descricao = descricao;
         this.fone = fone;
-        this.funcionamento = funcionamento;
+        this.horaAbertura = horaAbertura;
+        this.horaFechamento = horaFechamento;
         this.tipo = tipo;
         this.nota = nota;
         this.userAdd = userAdd;
     }
 
-
-    
-    
     public int getId() {
         return id;
     }
@@ -58,7 +62,6 @@ public class Estabelecimento extends Endereco {
         this.id = id;
     }
 
-   
     public String getNome() {
         return nome;
     }
@@ -91,12 +94,20 @@ public class Estabelecimento extends Endereco {
         this.fone = fone;
     }
 
-    public LocalDate getFuncionamento() {
-        return funcionamento;
+    public String getHoraAbertura() {
+        return horaAbertura;
     }
 
-    public void setFuncionamento(LocalDate funcionamento) {
-        this.funcionamento = funcionamento;
+    public void setHoraAbertura(String horaAbertura) {
+        this.horaAbertura = horaAbertura;
+    }
+
+    public String getHoraFechamento() {
+        return horaFechamento;
+    }
+
+    public void setHoraFechamento(String horaFechamento) {
+        this.horaFechamento = horaFechamento;
     }
 
     public String getTipo() {
@@ -123,18 +134,21 @@ public class Estabelecimento extends Endereco {
         this.userAdd = userAdd;
     }
 
+    
+    
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 71 * hash + this.id;
-        hash = 71 * hash + Objects.hashCode(this.nome);
-        hash = 71 * hash + Objects.hashCode(this.foto);
-        hash = 71 * hash + Objects.hashCode(this.descricao);
-        hash = 71 * hash + Objects.hashCode(this.fone);
-        hash = 71 * hash + Objects.hashCode(this.funcionamento);
-        hash = 71 * hash + Objects.hashCode(this.tipo);
-        hash = 71 * hash + (int) (Double.doubleToLongBits(this.nota) ^ (Double.doubleToLongBits(this.nota) >>> 32));
-        hash = 71 * hash + Objects.hashCode(this.userAdd);
+        int hash = 3;
+        hash = 59 * hash + this.id;
+        hash = 59 * hash + Objects.hashCode(this.nome);
+        hash = 59 * hash + Objects.hashCode(this.foto);
+        hash = 59 * hash + Objects.hashCode(this.descricao);
+        hash = 59 * hash + Objects.hashCode(this.fone);
+        hash = 59 * hash + Objects.hashCode(this.horaAbertura);
+        hash = 59 * hash + Objects.hashCode(this.horaFechamento);
+        hash = 59 * hash + Objects.hashCode(this.tipo);
+        hash = 59 * hash + (int) (Double.doubleToLongBits(this.nota) ^ (Double.doubleToLongBits(this.nota) >>> 32));
+        hash = 59 * hash + Objects.hashCode(this.userAdd);
         return hash;
     }
 
@@ -174,7 +188,10 @@ public class Estabelecimento extends Endereco {
         if (!Objects.equals(this.userAdd, other.userAdd)) {
             return false;
         }
-        if (!Objects.equals(this.funcionamento, other.funcionamento)) {
+        if (!Objects.equals(this.horaAbertura, other.horaAbertura)) {
+            return false;
+        }
+        if (!Objects.equals(this.horaFechamento, other.horaFechamento)) {
             return false;
         }
         return true;
@@ -182,9 +199,9 @@ public class Estabelecimento extends Endereco {
 
     @Override
     public String toString() {
-        return "Estabelecimento{" + "id=" + id + ", nome=" + nome + ", foto=" + foto + ", descricao=" + descricao + ", fone=" + fone + ", funcionamento=" + funcionamento + ", tipo=" + tipo + ", nota=" + nota + ", userAdd=" + userAdd + '}';
+        return "Estabelecimento{" + "id=" + id + ", nome=" + nome + ", foto=" + foto + ", descricao=" + descricao + ", fone=" + fone + ", horaAbertura=" + horaAbertura + ", horaFechamento=" + horaFechamento + ", tipo=" + tipo + ", nota=" + nota + ", userAdd=" + userAdd + '}';
     }
     
     
-
-    }
+  
+}

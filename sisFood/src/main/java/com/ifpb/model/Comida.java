@@ -7,21 +7,18 @@ public class Comida {
     private String nome;
     private int id;
     private double preco;
-    private double nota;
     private String descricao;
 
-    public Comida(String nome, double preco, double nota, String descricao) {
+    public Comida(String nome, double preco, String descricao) {
         this.nome = nome;
         this.preco = preco;
-        this.nota = nota;
         this.descricao = descricao;
     }
     
-    public Comida( int id , String nome, double preco, double nota, String descricao) {
+    public Comida( int id , String nome, double preco, String descricao) {
         this.nome = nome;
         this.id = id;
         this.preco = preco;
-        this.nota = nota;
         this.descricao = descricao;
     }
     
@@ -51,14 +48,6 @@ public class Comida {
         this.preco = preco;
     }
 
-    public double getNota() {
-        return nota;
-    }
-
-    public void setNota(double nota) {
-        this.nota = nota;
-    }
-
     public String getDescricao() {
         return descricao;
     }
@@ -73,7 +62,6 @@ public class Comida {
         hash = 37 * hash + Objects.hashCode(this.nome);
         hash = 37 * hash + this.id;
         hash = 37 * hash + (int) (Double.doubleToLongBits(this.preco) ^ (Double.doubleToLongBits(this.preco) >>> 32));
-        hash = 37 * hash + (int) (Double.doubleToLongBits(this.nota) ^ (Double.doubleToLongBits(this.nota) >>> 32));
         hash = 37 * hash + Objects.hashCode(this.descricao);
         return hash;
     }
@@ -90,9 +78,6 @@ public class Comida {
             return false;
         }
         final Comida other = (Comida) obj;
-        if (this.nota != other.nota) {
-            return false;
-        }
         if (!Objects.equals(this.nome, other.nome)) {
             return false;
         }
@@ -107,7 +92,7 @@ public class Comida {
 
     @Override
     public String toString() {
-        return "Comida{" + "nome=" + nome + ", preco=" + preco + ", nota=" + nota + ", descricao=" + descricao + '}';
+        return "Comida{" + "nome=" + nome + ", preco=" + preco + "," +  ", descricao=" + descricao + '}';
     }
       
 }

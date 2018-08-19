@@ -27,13 +27,12 @@ public class ComidaDao implements ComidaDaoIF{
     public boolean inserir(Comida comida) {
         try {
             Connection con = Conexao.getConnection();
-            String sql = "INSERT INTO COMIDA(Nome, Nota, Descricao, Preco)"
-                   + "VALUES(?, ?, ?, ?)";
+            String sql = "INSERT INTO COMIDA(Nome, Descricao, Preco)"
+                   + "VALUES(?, ?, ?)";
             PreparedStatement pstm = con.prepareStatement(sql);
             pstm.setString(1,comida.getNome());
-            pstm.setDouble(2,comida.getNota());
-            pstm.setString(3,comida.getDescricao());
-            pstm.setDouble(4,comida.getPreco());
+            pstm.setString(2,comida.getDescricao());
+            pstm.setDouble(3,comida.getPreco());
             pstm.execute();
             pstm.close();
             con.close();
@@ -102,8 +101,7 @@ public class ComidaDao implements ComidaDaoIF{
                 c.setId(result.getInt("id"));
                 c.setNome(result.getString("nome"));
                 c.setDescricao(result.getString("descricao"));
-                c.setPreco(result.getDouble("preco"));
-                c.setNota(result.getDouble("nota"));
+                c.setPreco(result.getDouble("preco"));               
                 comidas.add(c);   
             }
             return comidas;
@@ -113,5 +111,6 @@ public class ComidaDao implements ComidaDaoIF{
             return null;
         }                
     }
-    
+
+   
 }

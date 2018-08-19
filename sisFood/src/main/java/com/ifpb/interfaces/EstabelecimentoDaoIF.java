@@ -9,9 +9,9 @@ import java.util.List;
  */
 public interface EstabelecimentoDaoIF {
     
-    public boolean Inserir (String email, Estabelecimento e);
-    public boolean Editar (String email, Estabelecimento e);
-    public boolean Remover (String email, Estabelecimento e);
-    public List<Estabelecimento> Listar(String email);
+    public boolean inserir (String email, Estabelecimento e);
+    public boolean editar (String email, Estabelecimento e);
+    public boolean remover (String email, Estabelecimento e);
+    public List<Estabelecimento> listar();
     
 }

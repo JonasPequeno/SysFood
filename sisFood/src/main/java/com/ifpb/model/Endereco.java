@@ -11,14 +11,14 @@ public abstract class Endereco {
     
     private String rua;
     private String cidade;
-    private String numero;
+    private int numero;
     private String cep;
     private String estado;
     
     public Endereco(){
     }
     
-    public Endereco(String rua, String cidade, String numero, String cep, String estado) {
+    public Endereco(String rua, String cidade, int numero, String cep, String estado) {
         this.rua = rua;
         this.cidade = cidade;
         this.numero = numero;
@@ -50,11 +50,11 @@ public abstract class Endereco {
         this.cidade = cidade;
     }
 
-    public String getNumero() {
+    public int getNumero() {
         return numero;
     }
 
-    public void setNumero(String numero) {
+    public void setNumero(int numero) {
         this.numero = numero;
     }
 
@@ -69,10 +69,11 @@ public abstract class Endereco {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 53 * hash + Objects.hashCode(this.rua);
-        hash = 53 * hash + Objects.hashCode(this.cidade);
-        hash = 53 * hash + Objects.hashCode(this.numero);
-        hash = 53 * hash + Objects.hashCode(this.cep);
+        hash = 61 * hash + Objects.hashCode(this.rua);
+        hash = 61 * hash + Objects.hashCode(this.cidade);
+        hash = 61 * hash + this.numero;
+        hash = 61 * hash + Objects.hashCode(this.cep);
+        hash = 61 * hash + Objects.hashCode(this.estado);
         return hash;
     }
 
@@ -88,16 +89,19 @@ public abstract class Endereco {
             return false;
         }
         final Endereco other = (Endereco) obj;
+        if (this.numero != other.numero) {
+            return false;
+        }
         if (!Objects.equals(this.rua, other.rua)) {
             return false;
         }
         if (!Objects.equals(this.cidade, other.cidade)) {
             return false;
         }
-        if (!Objects.equals(this.numero, other.numero)) {
+        if (!Objects.equals(this.cep, other.cep)) {
             return false;
         }
-        if (!Objects.equals(this.cep, other.cep)) {
+        if (!Objects.equals(this.estado, other.estado)) {
             return false;
         }
         return true;
@@ -105,7 +109,9 @@ public abstract class Endereco {
 
     @Override
     public String toString() {
-        return "Endereco{" + "rua=" + rua + ", cidade=" + cidade + ", numero=" + numero + ", cep=" + cep + '}';
+        return "Endereco{" + "rua=" + rua + ", cidade=" + cidade + ", numero=" + numero + ", cep=" + cep + ", estado=" + estado + '}';
     }
+
+   
        
 }

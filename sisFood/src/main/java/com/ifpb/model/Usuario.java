@@ -20,7 +20,7 @@ public class Usuario extends Endereco{
     public Usuario() {
     }
     
-    public Usuario(String nome, String email, String profissao, String sexo, String fotoPerfil, String senha,String rua, String numero,
+    public Usuario(String nome, String email, String profissao, String sexo, String fotoPerfil, String senha,String rua, int numero,
             String cidade, String cep,String descricao, String fone, String estado) {
         super(rua, cidade,numero,cep, estado);        
         this.nome = nome;
