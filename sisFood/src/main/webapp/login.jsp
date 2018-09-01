@@ -34,11 +34,11 @@
             </div>
             <div class="row"></div>
             <div class="row">
-                <a class="btn col s6 offset-s3" type="submit" value="entrar">Acessar</a>
+                <button class="btn col s6 offset-s3" type="submit" value="entrar">Acessar</button>
                 <div class="row"></div>
                 <a class="col s4 offset-s2" herf="">Criar conta de acesso!</a>
             </div>
-            <input type="hidden" name="Login" value="Login">
+            <input type="hidden" name="command" value="Login">
         </form>
     </div>    
     

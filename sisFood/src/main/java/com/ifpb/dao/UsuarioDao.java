@@ -156,7 +156,7 @@ public class UsuarioDao implements UsuarioDaoIF {
                user.setCep(result.getString("cep"));
                user.setFone(result.getString("fone"));
                user.setSexo(result.getString("sexo"));
-               user.setNumero(result.getInt("numero"));
+               //user.setNumero(result.getInt("numero"));
                user.setFotoPerfil(result.getString("foto"));
             }
             state.close();
@@ -194,7 +194,7 @@ public class UsuarioDao implements UsuarioDaoIF {
                user.setCep(result.getString("cep"));
                user.setFone(result.getString("fone"));
                user.setSexo(result.getString("sexo"));
-               user.setNumero(result.getInt("numero"));
+               //user.setNumero(result.getInt("numero"));
                user.setFotoPerfil(result.getString("foto"));
             }
             state.close();

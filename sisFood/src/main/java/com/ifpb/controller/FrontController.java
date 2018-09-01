@@ -33,7 +33,7 @@ public class FrontController extends HttpServlet{
 
 
         try {
-            CommandIF command = (CommandIF) Class.forName("com.ifpb.command" + action + "Command").newInstance();
+            CommandIF command = (CommandIF) Class.forName("com.ifpb.command." + action + "Command").newInstance();
             command.execute(request, response);
 
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException | ServletException ex) {
