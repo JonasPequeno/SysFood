@@ -50,15 +50,16 @@ public class AmigosDao implements AmigosIF{
         ArrayList<String> amigos = new ArrayList<>();
         try {
             Connection con = Conexao.getConnection();
-            String sql = "SELECT * FROM getAmigos(?)";
+            String sql = "SELECT * FROM getAmigos('"+email+"')";
             
-            PreparedStatement state = con.prepareCall(sql);
-            
-            state.setString(1, email);
-            
+            Statement state = con.createStatement(
+                    ResultSet.CONCUR_UPDATABLE,
+                    ResultSet.HOLD_CURSORS_OVER_COMMIT,
+                    ResultSet.TYPE_SCROLL_SENSITIVE
+            );                       
             ResultSet result = state.executeQuery(sql);
             while(result.next()){
-               amigos.add(result.getString("userDestinatario"));
+               amigos.add(result.getString("email"));
             }
             
             con.close();

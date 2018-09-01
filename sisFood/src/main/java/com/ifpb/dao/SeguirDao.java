@@ -29,7 +29,7 @@ public class SeguirDao implements SeguirIF{
             
             ResultSet result = state.executeQuery(sql);
             while(result.next()){
-               seguidores.add(result.getString("userDestinatario"));
+               seguidores.add(result.getString("email"));
             }
             
             con.close();

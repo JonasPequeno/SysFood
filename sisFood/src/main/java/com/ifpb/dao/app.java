@@ -15,11 +15,9 @@ import java.util.List;
 public class app {
     
     public static void main(String[] args) {
-        
-       ComidaDao dao = new ComidaDao();
-       Comida c = new Comida(1,"Carne de Sol", 12.2, "Carne de sol ao molho, com batata frita");
-       dao.remover(c);
-    
    
+        SeguirDao dao = new SeguirDao();
+        
+        dao.aceitarAmizade("Jonas@gmail.com", "Irineu@gmail.com");
     }
 }

@@ -134,4 +134,78 @@ public class UsuarioDao implements UsuarioDaoIF {
         }
     }
     
+    public Usuario getByEmail (String email) {
+        try {
+            System.out.println("Email no dao" + email);
+            Usuario user = new Usuario();
+            Connection con = Conexao.getConnection();
+            String sql = "SELECT * FROM USUARIO WHERE EMAIL = ?";
+            PreparedStatement state = con.prepareStatement(sql);
+            state.setString(1, email);
+            ResultSet result = state.executeQuery();
+            
+            if(result.next()) {
+               user.setEmail(result.getString("email"));
+               user.setSenha(result.getString("senha"));
+               user.setNome(result.getString("nome"));
+               user.setProfissao(result.getString("profissao"));
+               user.setDescricao(result.getString("descricao"));
+               user.setRua(result.getString("rua"));
+               user.setCidade(result.getString("cidade"));
+               user.setEstado(result.getString("estado"));
+               user.setCep(result.getString("cep"));
+               user.setFone(result.getString("fone"));
+               user.setSexo(result.getString("sexo"));
+               user.setNumero(result.getInt("numero"));
+               user.setFotoPerfil(result.getString("foto"));
+            }
+            state.close();
+            con.close();
+            return user;
+            
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDao.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }     
+    }
+     
+    public Usuario login (String email, String senha) {
+            Usuario user = new Usuario();
+            Connection con;
+        try {
+            con = Conexao.getConnection();
+            String sql = "SELECT * FROM USUARIO WHERE EMAIL = ? AND SENHA = ?";
+            PreparedStatement state = con.prepareStatement(sql);
+            state.setString(1, email);
+            state.setString(2, senha);
+            ResultSet result = state.executeQuery();
+            
+            if(result.next()) {
+               user.setEmail(result.getString("email"));
+               user.setSenha(result.getString("senha"));
+               user.setNome(result.getString("nome"));
+               user.setProfissao(result.getString("profissao"));
+               user.setDescricao(result.getString("descricao"));
+               user.setRua(result.getString("rua"));
+               user.setCidade(result.getString("cidade"));
+               user.setEstado(result.getString("estado"));
+               user.setCep(result.getString("cep"));
+               user.setFone(result.getString("fone"));
+               user.setSexo(result.getString("sexo"));
+               user.setNumero(result.getInt("numero"));
+               user.setFotoPerfil(result.getString("foto"));
+            }
+            state.close();
+            con.close();
+            return user;
+            
+        } catch (SQLException ex) {
+            System.out.println("Erro " + ex.getMessage());
+            return null;
+        }        
+               
+    }
+    
 }
