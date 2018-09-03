@@ -18,17 +18,26 @@ public class UsuarioManager {
     public Usuario login (String email, String senha) {
        UsuarioDao dao = new UsuarioDao();
        Usuario usuario = null;          
-        System.out.println("Email pessoa Manager" + email);
-        if(dao.getByEmail(email) != null) {
+       
+        if(dao.getByEmail(email) == null) {
             System.out.println("Email nao encontrado");
+            return null;
         }
         else {
             usuario = dao.login(email, senha);
             if(usuario == null) {
                 System.out.println("Senha Incorreta");
-            }
+                return null;
+            }else return usuario;       
         }
-        return usuario;        
+ 
+    }
+    
+    public boolean cadastra (Usuario user) {
+        UsuarioDao dao = new UsuarioDao();
+        
+        return dao.inserir(user);        
+        
     }
     
 }

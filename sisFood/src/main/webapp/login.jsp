@@ -36,7 +36,7 @@
             <div class="row">
                 <button class="btn col s6 offset-s3" type="submit" value="entrar">Acessar</button>
                 <div class="row"></div>
-                <a class="col s4 offset-s2" herf="">Criar conta de acesso!</a>
+                <a class="col s4 offset-s2" href="cadastro.jsp">Criar conta de acesso!</a>
             </div>
             <input type="hidden" name="command" value="Login">
         </form>

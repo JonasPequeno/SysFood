@@ -26,23 +26,28 @@ public class LoginCommand implements CommandIF{
     public void execute(HttpServletRequest request, HttpServletResponse response)
         throws SQLException, ClassNotFoundException, IOException, ServletException{    
             Usuario usuarioLogado = new Usuario();
+            
             UsuarioManager usuarioManager = new UsuarioManager();
+            
             String email  = request.getParameter("email");
             String senha = request.getParameter("senha");
-                        
-            try {
-                usuarioLogado = usuarioManager.login(email, senha);
-                System.out.println("Usuario logado" + usuarioLogado);
-                HttpSession  session  = request.getSession();
-                session.setAttribute("usuario", usuarioLogado);
-                response.setStatus(200);
-                response.sendRedirect("home.jsp");
-            }
-            catch(IOException e) {
-                String erro = URLEncoder.encode(e.getMessage(), "utf-8");
-                response.sendRedirect("home.jsp?erro"+erro);
-            }          
-        
-        }
+            
+            usuarioLogado = usuarioManager.login(email, senha);
+            
+            System.out.println("Usuario Logado : " + usuarioLogado);
+            
+                if(usuarioLogado.getEmail() != null ) {
+                    
+                    HttpSession  session  = request.getSession();
+                    session.setAttribute("usuario Logado", usuarioLogado);
+                    response.setStatus(200);
+                    response.sendRedirect("home.jsp");   
+                    
+                }else {                    
+                    response.setStatus(404);
+                    response.sendRedirect("erro.jsp?erro");
+                }
+            }            
+                
     
 }

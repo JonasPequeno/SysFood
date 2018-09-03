@@ -139,7 +139,7 @@ public class UsuarioDao implements UsuarioDaoIF {
             System.out.println("Email no dao" + email);
             Usuario user = new Usuario();
             Connection con = Conexao.getConnection();
-            String sql = "SELECT * FROM USUARIO WHERE EMAIL = ?";
+            String sql = "SELECT * FROM USUARIO WHERE EMAIL ILIKE ?";
             PreparedStatement state = con.prepareStatement(sql);
             state.setString(1, email);
             ResultSet result = state.executeQuery();
@@ -176,7 +176,7 @@ public class UsuarioDao implements UsuarioDaoIF {
             Connection con;
         try {
             con = Conexao.getConnection();
-            String sql = "SELECT * FROM USUARIO WHERE EMAIL = ? AND SENHA = ?";
+            String sql = "SELECT * FROM USUARIO WHERE EMAIL ILIKE ? AND SENHA ILIKE ?";
             PreparedStatement state = con.prepareStatement(sql);
             state.setString(1, email);
             state.setString(2, senha);
