@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Cadastro</title>
     </head>
     <body>
          <div class="row">        
@@ -31,9 +31,9 @@
                     <label for="sexo">Sexo</label>
                 </div>
                 
-                <div class="input-field  col s4">
-                    <input type="file" name="foto" required > 
+                <div class="input-field col s4">                   
                     <label for="foto"></label>
+                    <input type="file" name="foto" required > 
                 </div>
             </div>
             
@@ -58,10 +58,10 @@
                 </div>
             </div>
             <div class="row">
-                <div class="input-field offset-s2 col s8">   
-                    <input type="text" name="fone" required>
-                    <label for="fone">Fone</label>
-                </div>
+                 <div class="input-field offset-s2 col s8">   
+                    <input type="text" name="rua" required>
+                    <label for="rua">Rua</label>
+                </div>                                
             </div>
             
             <div class="row">
@@ -73,9 +73,9 @@
                     <input type="text" name="cidade" required>
                     <label for="cidade">Cidade</label>
                 </div>
-                 <div class="input-field col s2">   
-                    <input type="text" name="rua" required>
-                    <label for="rua">Rua</label>
+                <div class="input-field col s2">   
+                    <input type="text" name="fone" required>
+                    <label for="fone">Fone</label>
                 </div>
                 <div class="input-field col s2">   
                     <input type="text" name="cep" required>

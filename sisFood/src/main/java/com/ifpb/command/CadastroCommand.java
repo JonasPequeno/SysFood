@@ -8,19 +8,11 @@ package com.ifpb.command;
 import com.ifpb.interfaces.CommandIF;
 import com.ifpb.model.Manager.UsuarioManager;
 import com.ifpb.model.Usuario;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.sql.SQLException;
-import java.util.Base64;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
 
 /**
  *
@@ -55,7 +47,6 @@ public class CadastroCommand implements CommandIF{
              response.setStatus(404);
              response.sendRedirect("erro.jsp?erro");
         }
-        
         
         
     }
