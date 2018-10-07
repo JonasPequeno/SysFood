@@ -16,7 +16,7 @@
         <h1 class="center">SysFood</h1>
     </div>
     <div class="row">
-        <form method="POST" action="front" class="col s12">
+        <form method="POST" action="front" enctype="multipart/form-data" class="col s12">
             <div class="row">
                 <div class="input-field offset-s2 col s8">
                     <input type="email" name="email" required > 
@@ -24,8 +24,7 @@
                 </div>
             </div>
             
-            <div class="row">
-                
+            <div class="row"> 
                 <div class="input-field offset-s2 col s2">
                     <input type="text" name="sexo" maxlength="1" required > 
                     <label for="sexo">Sexo</label>

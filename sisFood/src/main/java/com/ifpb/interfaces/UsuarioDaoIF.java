@@ -12,5 +12,7 @@ public interface UsuarioDaoIF {
     public boolean editar (Usuario usuario);
     public boolean remover (Usuario usuario);
     public List<Usuario> listar();
+    public Usuario getByEmail (String email);
+    public Usuario login (String email, String senha);
     
 }

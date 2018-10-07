@@ -1,6 +1,7 @@
 package com.ifpb.dao;
 
 import com.ifpb.factory.Conexao;
+import com.ifpb.infra.FileManagement;
 import com.ifpb.interfaces.UsuarioDaoIF;
 import com.ifpb.model.Usuario;
 import java.sql.Connection;
@@ -22,6 +23,7 @@ public class UsuarioDao implements UsuarioDaoIF {
     public boolean inserir(Usuario usuario) {
         try {
             Connection con = Conexao.getConnection();
+            FileManagement file = new FileManagement();
             String sql = "INSERT INTO USUARIO(Nome, Sexo, Email, Foto, Fone, "
                     + "Descricao, Profissao, Cidade, Estado, Cep, Rua, Senha) VALUES ("
                     + "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -133,7 +135,7 @@ public class UsuarioDao implements UsuarioDaoIF {
             return null;
         }
     }
-    
+    @Override    
     public Usuario getByEmail (String email) {
         try {
             System.out.println("Email no dao" + email);
@@ -171,6 +173,7 @@ public class UsuarioDao implements UsuarioDaoIF {
         }     
     }
      
+    @Override
     public Usuario login (String email, String senha) {
             Usuario user = new Usuario();
             Connection con;
@@ -207,5 +210,6 @@ public class UsuarioDao implements UsuarioDaoIF {
         }        
                
     }
+           
     
 }

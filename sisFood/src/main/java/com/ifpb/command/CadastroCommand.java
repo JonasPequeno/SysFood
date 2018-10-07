@@ -5,14 +5,21 @@
  */
 package com.ifpb.command;
 
+import com.ifpb.infra.FileManagement;
 import com.ifpb.interfaces.CommandIF;
 import com.ifpb.model.Manager.UsuarioManager;
 import com.ifpb.model.Usuario;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 /**
  *
@@ -36,19 +43,50 @@ public class CadastroCommand implements CommandIF{
         user.setRua(request.getParameter("rua"));
         user.setCep(request.getParameter("cep"));
         user.setEstado(request.getParameter("estado"));
-        user.setSexo(request.getParameter("sexo"));        
-        user.setFotoPerfil(request.getParameter("foto"));
-        
-        if(usuarioMeManager.cadastra(user)) {
-             response.setStatus(200);
-             response.sendRedirect("login.jsp");   
+        user.setSexo(request.getParameter("sexo"));                      
+        final Part fotoPerfil = request.getPart("foto");
+        System.out.println("Foto :" + fotoPerfil);
+
+            OutputStream out = null;
+            InputStream filecontent = null;
+
+            try {
+                out = new FileOutputStream(new File("./" + File.separator
+                        + fotoPerfil.hashCode()));
+                filecontent = fotoPerfil.getInputStream();
+
+                int read = 0;
+                final byte[] bytes = new byte[1024];
+
+                while ((read = filecontent.read(bytes)) != -1) {
+                    out.write(bytes, 0, read);
+                }
+
+            } catch (FileNotFoundException ex) {
+                ex.printStackTrace();
+
+            } finally {
+                if (out != null) {
+                    out.close();
+                }
+                if (filecontent != null) {
+                    filecontent.close();
+                }
+            }
+
+            File foto = new File("./" + File.separator
+                    + fotoPerfil.hashCode());
+
+            String fotoBase64 = FileManagement.encodeFile(foto);
+            System.out.println("Foto base64" + fotoBase64);
+            user.setFotoPerfil(fotoBase64);
             
-        }else{
-             response.setStatus(404);
-             response.sendRedirect("erro.jsp?erro");
-        }
-        
-        
+            if(usuarioMeManager.inserir(user)) {
+                response.sendRedirect("login.jsp");                
+            }
+            
+            
+               
     }
     
     

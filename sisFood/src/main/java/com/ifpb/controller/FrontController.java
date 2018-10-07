@@ -4,6 +4,8 @@ import com.ifpb.interfaces.CommandIF;
 import java.io.IOException;
 import java.sql.SQLException;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,6 +14,13 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author jonas
  */
+
+@MultipartConfig(
+        fileSizeThreshold=1024*1024*10, 	
+        maxFileSize=1024*1024*50,      	
+        maxRequestSize=1024*1024*100
+)  
+
 public class FrontController extends HttpServlet{
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -68,7 +77,7 @@ public class FrontController extends HttpServlet{
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException {       
         processRequest(request, response);
     }
 
