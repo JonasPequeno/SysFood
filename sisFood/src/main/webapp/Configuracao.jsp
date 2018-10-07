@@ -1,0 +1,139 @@
+<%-- 
+    Document   : Configuracao
+    Created on : 07/10/2018, 13:52:49
+    Author     : Matheus
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Configuração</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+  <style type="text/css">
+
+    .menu a {
+      background-color: none; /* Grey background color */
+      display: block; /* Make the links appear below each other */
+      padding: 12px; /* Add some padding */
+      text-decoration: none; /* Remove underline from links */
+    }
+
+    .menu a:hover {
+      background-color: #bdbdbd; /* Dark grey background on mouse-over */
+    }
+
+
+  </style>
+
+</head>
+<body>
+
+
+  <!--Barra de navegaão-->
+  <nav>
+    <div class="nav-wrapper #7b1fa2 purple darken-2">
+      <a href="#" class="brand-logo" style="margin-left: 2%;">SysFood</a>
+    </div>
+  </nav>
+   
+
+ <div class="row">
+    
+      <!--Perfil e Menu-->
+      <div class="col s4">
+        
+        <div class="row">
+          <div class="col s8">
+            <div class="card">
+              <div class="card-image">
+                <img src="home1.jpg">
+                <span class="card-title">Matheus Ramyres</span>
+              </div>
+
+              <div class="card-content #f3e5f5 purple lighten-5 center">
+                <p>Profissão Analista</p>
+                <p>Mora em Cajazeiras, PB</p>
+                <p>Nascimento Setembro 3, 1996</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col s8">
+            <div class="menu #f3e5f5 purple lighten-5 center">
+              
+                <a class="waves-effect black-text " href="#">Amigos</a>
+                <a class="waves-effect black-text " href="#">Mesagens</a>
+                <a class="waves-effect black-text " href="#">Seguidores</a>
+                <a class="waves-effect black-text " href="#">Meus Estabelecimentos</a>
+                <a class="waves-effect black-text " href="#">Configurações</a>
+                <a class="waves-effect black-text " href="#">Sair</a>
+              
+            </div>
+          </div> 
+        </div>
+
+      <!--fim Perfil e Menu-->
+      </div>
+
+      
+
+
+      <!--Conteúdo meio da paágina-->
+      <div class="col s8 pull-s1" style="margin-top: 2px;">
+        
+        <div class="row">
+          <form class="col s8" style="margin-left: 20%; margin-top: 5%;">
+            <div class="row">
+
+              <div class="input-field col s12">
+                <input id="nome" type="text" class="validate" name="nome">
+                  <label for="nome">Nome</label>
+              </div>
+
+              <div class="input-field col s12">
+                <input id="email" type="text" class="validate" name="email">
+                  <label for="email">Email</label>
+              </div>
+
+              <div class="input-field col s12">
+                <input id="nascimento" type="text" class="validate" name="nascimento">
+                  <label for="nascimento">Data de Nascimento</label>
+              </div>
+
+              <div class="input-field col s12">
+                <input id="endereco" type="text" class="validate" name="endereco">
+                  <label for="endereco">Endereço</label>
+              </div>
+
+              <div class="input-field col s12">
+                <input id="telefone" type="text" class="validate" name="telefone">
+                  <label for="telefone">Telefone</label>
+              </div>
+
+              <button class="btn waves-effect waves-light" type="submit" name="atualizar" style="margin-left: 5%;">Atualizar</button>
+              <button class="btn waves-effect waves-light" type="submit" name="excluir" style="margin-left: 40%;">Excluir Conta</button>
+
+            </div>
+          </form>
+      </div>
+            
+    </div>
+
+
+  </div>
+
+
+       
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>       
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  
+</body>
+</html>
