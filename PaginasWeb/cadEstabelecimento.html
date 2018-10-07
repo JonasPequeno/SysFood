@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Cadastro de Estabelecimentos</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+  <style type="text/css">
+
+    .menu a {
+      background-color: none; /* Grey background color */
+      display: block; /* Make the links appear below each other */
+      padding: 12px; /* Add some padding */
+      text-decoration: none; /* Remove underline from links */
+    }
+
+    .menu a:hover {
+      background-color: #bdbdbd; /* Dark grey background on mouse-over */
+    }
+
+
+  </style>
+
+</head>
+<body>
+
+
+  <!--Barra de navegaão-->
+  <nav>
+    <div class="nav-wrapper #7b1fa2 purple darken-2">
+      <a href="#" class="brand-logo" style="margin-left: 2%;">SysFood</a>
+    </div>
+  </nav>
+   
+
+ <div class="row">
+    
+      <!--Perfil e Menu-->
+      <div class="col s4">
+        
+        <div class="row">
+          <div class="col s8">
+            <div class="card">
+              <div class="card-image">
+                <img src="home1.jpg">
+                <span class="card-title">Matheus Ramyres</span>
+              </div>
+
+              <div class="card-content #f3e5f5 purple lighten-5 center">
+                <p>Profissão Analista</p>
+                <p>Mora em Cajazeiras, PB</p>
+                <p>Nascimento Setembro 3, 1996</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col s8">
+            <div class="menu #f3e5f5 purple lighten-5 center">
+              
+                <a class="waves-effect black-text " href="#">Amigos</a>
+                <a class="waves-effect black-text " href="#">Mesagens</a>
+                <a class="waves-effect black-text " href="#">Seguidores</a>
+                <a class="waves-effect black-text " href="#">Meus Estabelecimentos</a>
+                <a class="waves-effect black-text " href="#">Configurações</a>
+                <a class="waves-effect black-text " href="#">Sair</a>
+              
+            </div>
+          </div> 
+        </div>
+
+      <!--fim Perfil e Menu-->
+      </div>
+
+      
+
+
+      <!--Conteúdo meio da paágina-->
+      <div class="col s8 pull-s1" style="margin-top: 2px;">
+        
+          <div class="row">
+            <form class="col s12" style="margin-left: 5%; margin-top: 5%;">
+              <div class="row">
+
+                <div class="input-field col s6">
+                  <input id="nome" type="text" class="validate">
+                    <label for="nome">Nome</label>
+                </div>
+
+                <div class="input-field col s6">
+                  <input id="endereco" type="text" class="validate">
+                    <label for="endereco">Endereço</label>
+                </div>
+
+                <div class="input-field col s6">
+                  <input id="descricao" type="text" class="validate">
+                    <label for="descricao">Descrição</label>
+                </div>
+
+
+
+                <div class="input-field col s6">
+                  <input id="telefone" type="text" class="validate">
+                    <label for="telefone">Telefone</label>
+                </div>
+
+                <div class="input-field col s6">
+                  <input id="data" type="text" class="datepicker">
+                    <label for="data">Data</label>
+                </div>
+
+                <div class="col s6 file-field input-field">
+                  <div class="btn">
+                    <span>Imagem</span>
+                    <input type="file">
+                  </div>
+                  <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text">
+                  </div>
+                </div>
+
+                <div class="input-field col s12">
+                  <input id="comentario" type="text" class="materialize-textarea">
+                    <label for="comentario">Comentário</label>
+                </div>
+
+                 <!--DropDown nota-->
+                <ul id="dropdown1" class="dropdown-content">
+                  <li><a href="#!">0</a></li>
+                  <li><a href="#!">1</a></li>
+                  <li><a href="#!">2</a></li>
+                  <li><a href="#!">3</a></li>
+                  <li><a href="#!">4</a></li>
+                  <li><a href="#!">5</a></li>
+                  <li><a href="#!">6</a></li>
+                  <li><a href="#!">7</a></li>
+                  <li><a href="#!">8</a></li>
+                  <li><a href="#!">9</a></li>
+                  <li><a href="#!">10</a></li>
+                </ul>
+
+
+                <div class="input-field col s6">
+                  <a href="#" class="col s12 btn dropdown-trigger" data-target="dropdown1">Nota<i class="material-icons right">arrow_drop_down</i></a>
+                  
+                </div>
+
+                <!--DropDown tipo-->
+                <ul id="dropdown2" class="dropdown-content">
+                  <li><a href="#!">Restaurante</a></li>
+                  <li><a href="#!">Fast Food</a></li>
+                  <li><a href="#!">Comida Caseira</a></li>
+                </ul>
+
+                <div class="input-field col s6">
+                  <a href="#" class="col s12 btn dropdown-trigger" data-target="dropdown2">Tipo<i class="material-icons right">arrow_drop_down</i></a>
+                </div>
+
+                <button class="btn waves-effect waves-light" type="submit" name="action" style="margin-left: 35%; margin-top: 5%;">Cadastrar</button>
+
+              </div>
+            </form>
+          </div>
+            
+      </div>
+
+
+  </div>
+
+
+       
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>       
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  
+  <script>
+    /*Script para Dropdown */
+    $('.dropdown-trigger').dropdown();
+    
+    /*Script para data */
+    $(document).ready(function(){
+     $('.datepicker').datepicker();
+    });
+  </script>
+
+</body>
+</html>
