@@ -63,11 +63,11 @@
           </div>
         </div>
 
-        <div class="row">
+     <div class="row">
           <div class="col s8">
             <div class="menu #f3e5f5 purple lighten-5 center">
               
-                <a class="waves-effect black-text " href="#">Amigos</a>
+                <a class="waves-effect black-text " href="front?command=Amigo">Amigos</a>
                 <a class="waves-effect black-text " href="#">Mesagens</a>
                 <a class="waves-effect black-text " href="#">Seguidores</a>
                 <a class="waves-effect black-text " href="front?command=Estabelecimento">Meus Estabelecimentos</a>
@@ -86,10 +86,10 @@
          <h3>Meus Estabelecimentos</h3>
          <ul class="collection">
             <li class="collection-item avatar">
-              <img src="images/yuna.jpg" alt="" class="circle">
-              <span class="title">Title</span>
-              <p>First Line <br>
-                 Second Line
+              <img src="data:image/jpg;base64,${listaAmigos[0].fotoPerfil}" alt="" class="circle">
+              <span class="title">${listaAmigos[0].nome}</span>
+              <p>${listaAmigos[0].email}<br>
+                 ${listaAmigos[0].descricao}
               </p>
               <div class="col s2 offset-s10">
                   <button class="secondary-content red btn waves-effect waves-light" type="submit" name="action">Excluir

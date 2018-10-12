@@ -7,6 +7,7 @@ package com.ifpb.dao;
 
 import com.ifpb.factory.Conexao;
 import com.ifpb.interfaces.AmigosIF;
+import com.ifpb.model.Usuario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -46,11 +47,11 @@ public class AmigosDao implements AmigosIF{
     }
     
     @Override
-    public List<String> listarAmigos(String email) {
-        ArrayList<String> amigos = new ArrayList<>();
+    public List<Usuario> listarAmigos(String email) {
+        ArrayList<Usuario> amigos = new ArrayList<>();
         try {
             Connection con = Conexao.getConnection();
-            String sql = "SELECT * FROM getAmigos('"+email+"')";
+            String sql = "SELECT * FROM usuario u, getAmigos('"+email+"') g WHERE g.email ilike u.email ";
             
             Statement state = con.createStatement(
                     ResultSet.CONCUR_UPDATABLE,
@@ -59,7 +60,19 @@ public class AmigosDao implements AmigosIF{
             );                       
             ResultSet result = state.executeQuery(sql);
             while(result.next()){
-               amigos.add(result.getString("email"));
+               Usuario u = new Usuario();
+                u.setNome(result.getString("nome"));
+                u.setEmail(result.getString("email"));
+                u.setSexo(result.getString("sexo"));
+                u.setFone(result.getString("fone"));
+                u.setFotoPerfil(result.getString("foto"));
+                u.setDescricao(result.getString("descricao"));
+                u.setProfissao(result.getString("profissao"));
+                u.setCidade(result.getString("cidade"));
+                u.setEstado(result.getString("estado"));
+                u.setCep(result.getString("cep"));
+                u.setRua(result.getString("rua"));
+                amigos.add(u);
             }
             
             con.close();

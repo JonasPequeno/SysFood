@@ -33,10 +33,12 @@ public class AmigoCommand implements CommandIF{
         Object user = request.getSession().getAttribute("Usuario");
         Usuario usuario = (Usuario) (user);
         
-        List<String> amigos = new ArrayList<>();
+        List<Usuario> amigos = new ArrayList<>();
             amigos = gereciador.listarAmigos(usuario.getEmail());
         
         request.getSession().setAttribute("listaAmigos",amigos);
+        
+        response.sendRedirect("amigos.jsp");
         
     }
     

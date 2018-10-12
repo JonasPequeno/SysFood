@@ -3,6 +3,7 @@ package com.ifpb.model.Manager;
 import com.ifpb.factory.DaoFactory;
 import com.ifpb.interfaces.AmigosIF;
 import com.ifpb.interfaces.DaoFactoryIF;
+import com.ifpb.model.Usuario;
 import java.util.List;
 
 /**
@@ -20,7 +21,7 @@ public class AmigosManager  implements  AmigosIF{
     }
     
     @Override
-    public List<String> listarAmigos(String email) {
+    public List<Usuario> listarAmigos(String email) {
         return amigosDao.listarAmigos(email);
     }
 

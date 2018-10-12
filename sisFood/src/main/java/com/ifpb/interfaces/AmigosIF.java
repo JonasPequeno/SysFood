@@ -1,5 +1,6 @@
 package com.ifpb.interfaces;
 
+import com.ifpb.model.Usuario;
 import java.util.List;
 
 /**
@@ -8,7 +9,7 @@ import java.util.List;
  */
 public interface AmigosIF {
     
-    public List<String> listarAmigos(String email);
+    public List<Usuario> listarAmigos(String email);
     public boolean aceitarAmizade(String userRemetente, String userDestinatario);
     public boolean excluirAmigo(String userRemetente, String userDestinatario);
     public boolean enviarSolicitacao (String userRemetente, String userDestinatario);
