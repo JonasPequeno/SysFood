@@ -38,7 +38,7 @@ public class EstabelecimentoCommand implements CommandIF{
                 
         request.getSession().setAttribute("listaEstabelecimento", lista);
         
-        response.sendRedirect("teste.jsp");
+        response.sendRedirect("meusEstabelecimentos.jsp");
         
     }
     
