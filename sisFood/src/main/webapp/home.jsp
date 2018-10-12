@@ -58,8 +58,7 @@
 
               <div class="card-content #f3e5f5 purple lighten-5 center">
                 <p>${Usuario.profissao}</p>
-                <p>Mora em ${Usuario.cidade}, ${Usuario.estado}</p>
-                <p>Nascimento Setembro 3, 1996</p>
+                <p>Mora em ${Usuario.cidade}, ${Usuario.estado}</p>                
               </div>
             </div>
           </div>
@@ -72,9 +71,9 @@
                 <a class="waves-effect black-text " href="#">Amigos</a>
                 <a class="waves-effect black-text " href="#">Mesagens</a>
                 <a class="waves-effect black-text " href="#">Seguidores</a>
-                <a class="waves-effect black-text " href="#">Meus Estabelecimentos</a>
+                <a class="waves-effect black-text " href="front?command=Estabelecimento">Meus Estabelecimentos</a>
                 <a class="waves-effect black-text " href="#">Configurações</a>
-                <a class="waves-effect black-text " href="#">Sair</a>
+                <a class="waves-effect black-text " href="front?command=Sair" >Sair</a>
               
             </div>
           </div> 
@@ -97,7 +96,7 @@
               </div>
               <div class="card-stacked">
                 <div class="card-content">
-                  <p>I am a very simple card. I am good at containing small bits of information.</p>
+                  <p>${Usuario.nome}</p>
                 </div>
                 <div class="card-action">
                   <a href="#">Marcar Presença</a>
@@ -110,87 +109,7 @@
             </div>
           </div>
             
-        </div>
-
-        <!--Restaurante 02-->
-        <div class="row">
-
-          <div class="col s12">
-            <div class="card horizontal">
-              <div class="card-image">
-                <img src="data:image/jpg;base64,${Usuario.fotoPerfil}">
-                <span class="card-title">Restaurante-02</span>
-              </div>
-              <div class="card-stacked">
-                <div class="card-content">
-                  <p>I am a very simple card. I am good at containing small bits of information.</p>
-                </div>
-                <div class="card-action">
-                  <a href="#">Marcar Presença</a>
-                  <a href="#">Divulgar</a>
-                  <a href="#">Compartilhar</a>
-                  <a href="#">Comentar</a>
-                  <a href="#"></a>
-                </div>
-              </div>
-            </div>
-          </div>
-            
-        </div>
-
-        <!--Restaurante 03-->
-        <div class="row">
-
-          <div class="col s12">
-            <div class="card horizontal">
-              <div class="card-image">
-                <img src="data:image/jpg;base64,${Usuario.fotoPerfil}">
-                <span class="card-title">Restaurante-03</span>
-              </div>
-              <div class="card-stacked">
-                <div class="card-content">
-                  <p>I am a very simple card. I am good at containing small bits of information.</p>
-                </div>
-                <div class="card-action">
-                  <a href="#">Marcar Presença</a>
-                  <a href="#">Divulgar</a>
-                  <a href="#">Compartilhar</a>
-                  <a href="#">Comentar</a>
-                  <a href="#">This is a link</a>
-                </div>
-              </div>
-            </div>
-          </div>
-            
-        </div>
-
-        <!--Restaurante 04-->
-        <div class="row">
-
-          <div class="col s12">
-            <div class="card horizontal">
-              <div class="card-image">
-                <img src="data:image/jpg;base64,${Usuario.fotoPerfil}">
-                <span class="card-title">Restaurante-04</span>
-              </div>
-              <div class="card-stacked">
-                <div class="card-content">
-                  <p>I am a very simple card. I am good at containing small bits of information.</p>
-                </div>
-                <div class="card-action">
-                  <a href="#">Marcar Presença</a>
-                  <a href="#">Divulgar</a>
-                  <a href="#">Compartilhar</a>
-                  <a href="#">Comentar</a>
-                  <a href="#">This is a link</a>
-                </div>
-              </div>
-            </div>
-          </div>
-            
-        </div>
-
-            
+        </div>            
       </div>
 
 

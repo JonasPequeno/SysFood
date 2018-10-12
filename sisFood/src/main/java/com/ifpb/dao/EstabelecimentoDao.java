@@ -9,13 +9,10 @@ import com.ifpb.factory.Conexao;
 import com.ifpb.interfaces.EstabelecimentoDaoIF;
 import com.ifpb.model.Estabelecimento;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -162,6 +159,51 @@ public class EstabelecimentoDao implements EstabelecimentoDaoIF{
             return null;
         }
     }
+    
+    @Override   
+    public List<Estabelecimento> getEstabelecimentosUsuario (String usuario) {
+        try{
+            
+            List<Estabelecimento> lista = new ArrayList<>();
+            Connection con = Conexao.getConnection();
+            String sql = "SELECT * FROM ESTABELECIMENTO E WHERE E.UserAdd ilike ?";
+            Estabelecimento e = new Estabelecimento();
+            
+            PreparedStatement state = con.prepareStatement(sql);
+            
+            state.setString(1, usuario);
+            
+            ResultSet result = state.executeQuery();
+            
+            while (result.next())  {
+                e.setId(result.getInt("id"));
+                e.setFoto(result.getString("foto"));
+                e.setNome(result.getString("nome"));
+                e.setNumero(result.getInt("numero"));
+                e.setRua(result.getString("rua"));
+                e.setTipo(result.getString("tipo"));
+                e.setHoraAbertura(result.getString("horaAbertura"));
+                e.setHoraFechamento(result.getString("horaFechamento"));
+                e.setDescricao(result.getString("descricao"));
+                e.setUserAdd(result.getString("userAdd"));
+                e.setCidade(result.getString("cidade"));
+                e.setCidade(result.getString("cidade"));
+                e.setEstado(result.getString("estado"));
+                e.setCep(result.getString("cep"));                                    
+                
+                lista.add(e);
+            }
+            
+            return lista;
+            
+            
+        }
+        catch (Exception ex) {
+            Logger.getLogger(EstabelecimentoDao.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
        
+        
+    }
     
 }

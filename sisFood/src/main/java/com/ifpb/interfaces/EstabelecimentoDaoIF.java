@@ -13,5 +13,6 @@ public interface EstabelecimentoDaoIF {
     public boolean editar (String email, Estabelecimento e);
     public boolean remover (String email, Estabelecimento e);
     public List<Estabelecimento> listar();
+    public List<Estabelecimento> getEstabelecimentosUsuario(String usuario);
     
 }
