@@ -59,11 +59,18 @@
                 <label for="sexo">Sexo</label>
         </div>
             
-        <div class="input-field col s6">                   
-                <label for="foto" name="foto"></label>
-                <input type="file" name="foto" required > 
-        </div>
+       
           
+        <div class="col s6 file-field input-field">
+                <div class="btn">
+                  <span>Foto</span>
+                  <input type="file" name="foto" required>
+                </div>
+                <div class="file-path-wrapper">
+                  <input class="file-path validate" type="text">
+                </div>
+        </div>
+
         <div class="input-field col s12">   
                 <input type="text" name="descricao" required>
                 <label for="nome">Descricao</label>

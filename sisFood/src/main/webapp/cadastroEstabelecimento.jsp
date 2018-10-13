@@ -94,80 +94,65 @@
               <div class="row">
 
                 <div class="input-field col s6">
-                  <input id="nome" type="text" class="validate">
+                  <input id="nome" type="text" name="nome" class="validate" required>
                     <label for="nome">Nome</label>
                 </div>
 
                 <div class="input-field col s6">
-                  <input id="endereco" type="text" class="validate">
-                    <label for="endereco">Endereço</label>
+                    <input id="endereco" type="text" name="cidade" class="validate" required>
+                    <label for="endereco">Cidade</label>
+                </div>
+                  
+                <div class="input-field col s6">
+                  <input id="endereco" type="text" name="estado" class="validate" required>
+                    <label for="endereco">Estado</label>
+                </div>
+                  
+                <div class="input-field col s6">
+                    <input id="endereco" type="text" name="cep" class="validate" required>
+                    <label for="endereco">CEP</label>
+                </div>
+                  
+                <div class="input-field col s6">
+                  <input id="endereco" type="text" name="rua" class="validate" required>
+                    <label for="endereco">Rua</label>
+                </div>
+                  
+                <div class="input-field col s6">
+                  <input id="endereco" type="text" name="numero" class="validate" required>
+                    <label for="endereco">Numero</label>
                 </div>
 
                 <div class="input-field col s6">
-                  <input id="descricao" type="text" class="validate">
+                  <input id="descricao" type="text" name="descricao" class="validate" required>
                     <label for="descricao">Descrição</label>
                 </div>
 
 
 
                 <div class="input-field col s6">
-                  <input id="telefone" type="text" class="validate">
+                  <input id="telefone" type="text" name="telefone" class="validate" required>
                     <label for="telefone">Telefone</label>
                 </div>
 
-                <div class="input-field col s6">
-                  <input id="data" type="text" class="datepicker">
-                    <label for="data">Data</label>
-                </div>
-
+                  
                 <div class="col s6 file-field input-field">
                   <div class="btn">
                     <span>Imagem</span>
-                    <input type="file">
+                    <input type="file" name="foto" required>
                   </div>
                   <div class="file-path-wrapper">
                     <input class="file-path validate" type="text">
                   </div>
                 </div>
 
-                <div class="input-field col s12">
-                  <input id="comentario" type="text" class="materialize-textarea">
-                    <label for="comentario">Comentário</label>
-                </div>
-
-                 <!--DropDown nota-->
-                <ul id="dropdown1" class="dropdown-content">
-                  <li><a href="#!">0</a></li>
-                  <li><a href="#!">1</a></li>
-                  <li><a href="#!">2</a></li>
-                  <li><a href="#!">3</a></li>
-                  <li><a href="#!">4</a></li>
-                  <li><a href="#!">5</a></li>
-                  <li><a href="#!">6</a></li>
-                  <li><a href="#!">7</a></li>
-                  <li><a href="#!">8</a></li>
-                  <li><a href="#!">9</a></li>
-                  <li><a href="#!">10</a></li>
-                </ul>
-
-
+               
                 <div class="input-field col s6">
-                  <a href="#" class="col s12 btn dropdown-trigger" data-target="dropdown1">Nota<i class="material-icons right">arrow_drop_down</i></a>
-                  
+                  <input id="endereco" type="text" name="tipo" class="validate" required>
+                    <label for="endereco">Tipo</label>
                 </div>
 
-                <!--DropDown tipo-->
-                <ul id="dropdown2" class="dropdown-content">
-                  <li><a href="#!">Restaurante</a></li>
-                  <li><a href="#!">Fast Food</a></li>
-                  <li><a href="#!">Comida Caseira</a></li>
-                </ul>
-
-                <div class="input-field col s6">
-                  <a href="#" class="col s12 btn dropdown-trigger" data-target="dropdown2">Tipo<i class="material-icons right">arrow_drop_down</i></a>
-                </div>
-
-                <button class="btn waves-effect waves-light" type="submit" name="action" style="margin-left: 35%; margin-top: 5%;">Cadastrar</button>
+                <button class="col s4 btn waves-effect waves-light" type="submit" name="action" style="margin-left: 30%; margin-top: 5%;">Cadastrar</button>
 
               </div>
             </form>
@@ -183,15 +168,6 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>       
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   
-  <script>
-    /*Script para Dropdown */
-    $('.dropdown-trigger').dropdown();
-    
-    /*Script para data */
-    $(document).ready(function(){
-     $('.datepicker').datepicker();
-    });
-  </script>
 
 </body>
 </html>
