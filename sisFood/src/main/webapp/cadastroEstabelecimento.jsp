@@ -56,6 +56,8 @@
               </div>
 
               <div class="card-content #f3e5f5 purple lighten-5 center">
+                <a href="#"><i class="material-icons">settings</i></a>
+                <br>
                 <p>${Usuario.profissao}</p>
                 <p>Mora em ${Usuario.cidade}, ${Usuario.estado}</p>                
               </div>
@@ -69,9 +71,8 @@
               
                 <a class="waves-effect black-text " href="#">Amigos</a>
                 <a class="waves-effect black-text " href="#">Mesagens</a>
-                <a class="waves-effect black-text " href="#">Seguidores</a>
+                <a class="waves-effect black-text " href="#">Minhas Comidas</a>
                 <a class="waves-effect black-text " href="front?command=Estabelecimento">Meus Estabelecimentos</a>
-                <a class="waves-effect black-text " href="#">Configurações</a>
                 <a class="waves-effect black-text " href="front?command=Sair" >Sair</a>
               
             </div>
