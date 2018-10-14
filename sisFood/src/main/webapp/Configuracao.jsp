@@ -44,82 +44,88 @@
    
 
  <div class="row">
-    
-      <!--Perfil e Menu-->
-      <div class="col s4">
-        
-        <div class="row">
-          <div class="col s8">
-            <div class="card">
-              <div class="card-image">
-                <img src="home1.jpg">
-                <span class="card-title">Matheus Ramyres</span>
-              </div>
-
-              <div class="card-content #f3e5f5 purple lighten-5 center">
-                <p>Profissão Analista</p>
-                <p>Mora em Cajazeiras, PB</p>
-                <p>Nascimento Setembro 3, 1996</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col s8">
-            <div class="menu #f3e5f5 purple lighten-5 center">
-              
-                <a class="waves-effect black-text " href="#">Amigos</a>
-                <a class="waves-effect black-text " href="#">Mesagens</a>
-                <a class="waves-effect black-text " href="#">Seguidores</a>
-                <a class="waves-effect black-text " href="#">Meus Estabelecimentos</a>
-                <a class="waves-effect black-text " href="#">Configurações</a>
-                <a class="waves-effect black-text " href="#">Sair</a>
-              
-            </div>
-          </div> 
-        </div>
-
-      <!--fim Perfil e Menu-->
-      </div>
-
-      
-
-
+  
       <!--Conteúdo meio da paágina-->
-      <div class="col s8 pull-s1" style="margin-top: 2px;">
+      <div class="col s8" style="margin-top: 2px;">
         
         <div class="row">
-          <form class="col s8" style="margin-left: 20%; margin-top: 5%;">
+          <form method="POST" action="front" enctype="multipart/form-data" class="col s8" style= "margin-left: 45%; margin-top: 5%;">
+            <h3>Configurações de Usuário</h3>
+            <br>
             <div class="row">
 
-              <div class="input-field col s12">
-                <input id="nome" type="text" class="validate" name="nome">
-                  <label for="nome">Nome</label>
-              </div>
+                <div class="input-field col s12">
+                    <input id="nome" name="nome" type="text" class="validate">
+                    <label for="nome">Nome</label>
+                </div>
+          
 
-              <div class="input-field col s12">
-                <input id="email" type="text" class="validate" name="email">
-                  <label for="email">Email</label>
-              </div>
+                <div class="input-field col s6">
+                        <input type="text" name="sexo" maxlength="1" required > 
+                        <label for="sexo">Sexo</label>
+                </div>
 
-              <div class="input-field col s12">
-                <input id="nascimento" type="text" class="validate" name="nascimento">
-                  <label for="nascimento">Data de Nascimento</label>
-              </div>
 
-              <div class="input-field col s12">
-                <input id="endereco" type="text" class="validate" name="endereco">
-                  <label for="endereco">Endereço</label>
-              </div>
 
-              <div class="input-field col s12">
-                <input id="telefone" type="text" class="validate" name="telefone">
-                  <label for="telefone">Telefone</label>
-              </div>
+                <div class="col s6 file-field input-field">
+                        <div class="btn">
+                          <span>Foto</span>
+                          <input type="file" name="foto" required>
+                        </div>
+                        <div class="file-path-wrapper">
+                          <input class="file-path validate" type="text">
+                        </div>
+                </div>
 
-              <button class="btn waves-effect waves-light" type="submit" name="atualizar" style="margin-left: 5%;">Atualizar</button>
-              <button class="btn waves-effect waves-light" type="submit" name="excluir" style="margin-left: 40%;">Excluir Conta</button>
+                <div class="input-field col s12">   
+                        <input type="text" name="descricao" required>
+                        <label for="nome">Descricao</label>
+                </div>     
+
+                <div class="input-field col s4">   
+                          <input type="text" name="profissao" required>
+                            <label for="profissao">Profissao</label>
+                </div>            
+
+                <div class="input-field col s4">   
+                        <input type="text" name="rua" required>
+                        <label for="rua">Rua</label>
+                </div>
+
+
+                <div class="input-field col s4">   
+                    <input type="text" name="estado" required>
+                    <label for="estado">Estado</label>
+                </div>
+
+                <div class="input-field col s4">   
+                    <input type="text" name="cidade" required>
+                    <label for="cidade">Cidade</label>
+                </div>
+
+                <div class="input-field col s4">   
+                    <input type="text" name="fone" required>
+                    <label for="fone">Fone</label>
+                </div>
+
+                <div class="input-field col s4">   
+                    <input type="text" name="cep" required>
+                    <label for="cep">Cep</label>
+                </div>
+
+                <div class="input-field col s12">   
+                    <input type="password" name="senha" required>
+                    <label for="senha">Senha</label>
+                </div>
+                
+                <div class="input-field col s12">   
+                    <input type="password" name="confirmarSenha">
+                    <label for="confirmarSenha">Confirmar Senha</label>
+                </div>
+ 
+
+              <button class="btn waves-effect waves-light col s4" type="submit" name="atualizar" style="margin-left: 5%;">Atualizar</button>
+              <button class="btn waves-effect waves-light col s4" type="submit" name="excluir" style="margin-left: 20%;">Excluir Conta</button>
 
             </div>
           </form>
