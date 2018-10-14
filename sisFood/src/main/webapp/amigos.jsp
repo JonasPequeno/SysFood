@@ -92,11 +92,16 @@
               <p>${listaAmigos[0].email}<br>
                  ${listaAmigos[0].descricao}
               </p>
-              <div class="col s2 offset-s10">
-                  <button class="secondary-content red btn waves-effect waves-light" type="submit" name="action">Excluir
+              <div class="row">
+                  <button class=" red btn waves-effect waves-light col s2 push-s7" type="submit" name="seguir">Seguir
+                     <i class="material-icons right">done</i>
+                  </button>
+                  
+                  <button class="red btn waves-effect waves-light col s2 right" type="submit" name="excluir">Excluir
                      <i class="material-icons right">clear</i>
                   </button>
               </div>
+                 
             </li>        
          </ul>                       
       </div>
