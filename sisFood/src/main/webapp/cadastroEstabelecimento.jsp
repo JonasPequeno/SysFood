@@ -88,7 +88,7 @@
 
       <!--Conteúdo meio da paágina-->
       <div class="col s8 pull-s1" style="margin-top: 2px;">
-          <h3>Cadastra Estabelecimentos</h3>
+          <h3>Cadastrar Estabelecimentos</h3>
         
           <div class="row">
             <form class="col s12" style="margin-left: 5%; margin-top: 5%;">

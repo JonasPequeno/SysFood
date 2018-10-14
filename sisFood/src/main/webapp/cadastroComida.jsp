@@ -1,7 +1,7 @@
 <%-- 
-    Document   : amigos
-    Created on : 12/10/2018, 15:36:58
-    Author     : jonas
+    Document   : cadastroComida
+    Created on : 14/10/2018, 17:37:52
+    Author     : Matheus
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -9,7 +9,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Amigos</title>
+  <title>Cadastro de Comidas</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
@@ -65,11 +65,11 @@
           </div>
         </div>
 
-     <div class="row">
+        <div class="row">
           <div class="col s8">
             <div class="menu #f3e5f5 purple lighten-5 center">
               
-                <a class="waves-effect black-text " href="front?command=Amigo">Amigos</a>
+                <a class="waves-effect black-text " href="#">Amigos</a>
                 <a class="waves-effect black-text " href="#">Mesagens</a>
                 <a class="waves-effect black-text " href="#">Minhas Comidas</a>
                 <a class="waves-effect black-text " href="front?command=Estabelecimento">Meus Estabelecimentos</a>
@@ -82,46 +82,50 @@
       <!--fim Perfil e Menu-->
       </div>
 
+
+      
+
+
       <!--Conteúdo meio da paágina-->
       <div class="col s8 pull-s1" style="margin-top: 2px;">
-         <h3>Meus Amigos</h3>
-         <ul class="collection">
-            <li class="collection-item avatar">
-              <img src="data:image/jpg;base64,${listaAmigos[0].fotoPerfil}" alt="" class="circle">
-              <span class="title">${listaAmigos[0].nome}</span>
-              <p>${listaAmigos[0].email}<br>
-                 ${listaAmigos[0].descricao}
-              </p>
+          
+          <div class="row">
+            <form class="col s12" style="margin-left: 5%; margin-top: 5%;">
+              <h3>Cadastrar Comidas</h3>
+              <br>
               <div class="row">
-                  <button class=" red btn waves-effect waves-light col s2 push-s7" type="submit" name="seguir">Seguir
-                     <i class="material-icons right">done</i>
-                  </button>
+
+                <div class="input-field col s12">
+                  <input id="nome" type="text" name="nome" class="validate" required>
+                    <label for="nome">Nome</label>
+                </div>
+
+                <div class="input-field col s12">
+                    <input id="descricao" type="text" name="descricao" class="validate" required>
+                    <label for="descricao">Descrição</label>
+                </div>
                   
-                  <button class="red btn waves-effect waves-light col s2 right" type="submit" name="excluir">Excluir
-                     <i class="material-icons right">clear</i>
-                  </button>
+                <div class="input-field col s12">
+                  <input id="preco" type="text" name="preco" class="validate" required>
+                    <label for="preco">Preço</label>
+                </div>
+               
+                <button class="col s4 btn waves-effect waves-light" type="submit" name="action" style="margin-left: 30%; margin-top: 5%;">Cadastrar</button>
+
               </div>
-                 
-            </li>        
-         </ul>                       
+            </form>
+          </div>
+            
       </div>
-      
-      <div class="col s1 offset-s11">
-                   
-      </div>
+
+
+  </div>
+
+
        
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>       
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   
-  <script>
-    /*Script para Dropdown */
-    $('.dropdown-trigger').dropdown();
-    
-    /*Script para data */
-    $(document).ready(function(){
-     $('.datepicker').datepicker();
-    });
-  </script>
 
 </body>
 </html>
