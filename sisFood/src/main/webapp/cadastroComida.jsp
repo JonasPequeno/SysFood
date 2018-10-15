@@ -90,7 +90,7 @@
       <div class="col s8 pull-s1" style="margin-top: 2px;">
           
           <div class="row">
-            <form class="col s12" style="margin-left: 5%; margin-top: 5%;">
+            <form method="POST" action="front" class="col s12" style="margin-left: 5%; margin-top: 5%;">
               <h3>Cadastrar Comidas</h3>
               <br>
               <div class="row">
@@ -113,6 +113,7 @@
                 <button class="col s4 btn waves-effect waves-light" type="submit" name="action" style="margin-left: 30%; margin-top: 5%;">Cadastrar</button>
 
               </div>
+              <input type="hidden" name="command" value="Comida">
             </form>
           </div>
             
