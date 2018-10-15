@@ -26,12 +26,11 @@ public class EstabelecimentoManager implements EstabelecimentoDaoIF{
     @Override
     public boolean inserir(String email, Estabelecimento e) {
         try {
-            
-            return true;
+            return estabelecimentoDao.inserir(email, e);
         } catch (Exception ex) {
-            return true;
+            System.out.println(ex.getMessage());
         }
-        
+        return false;
     }
 
     @Override

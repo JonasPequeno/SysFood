@@ -21,9 +21,8 @@ import javax.servlet.http.HttpSession;
 public class EstabelecimentoCommand implements CommandIF{
 
     @Override
-    public void execute(HttpServletRequest request, HttpServletResponse response) throws SQLException, ClassNotFoundException, IOException, ServletException {
+    public void execute(HttpServletRequest request, HttpServletResponse response) throws SQLException, ClassNotFoundException, IOException, ServletException {      
         
-        HttpSession sessao = request.getSession();
         
         EstabelecimentoManager gerenciador = new EstabelecimentoManager();
         Object user = request.getSession().getAttribute("Usuario");

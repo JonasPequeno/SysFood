@@ -30,6 +30,7 @@ public class EstabelecimentoDao implements EstabelecimentoDaoIF{
     @Override
     public boolean inserir(String email, Estabelecimento e) {
         try {
+            System.out.println("estabelecimento recebio :" + e.toString());
             Connection con = Conexao.getConnection();
             String sql ="INSERT INTO estabelecimento(NOME, FOTO,FONE,TIPO,HORAABERTURA,HORAFECHAMENTO,"
                     + "DESCRICAO,USERADD,CIDADE,ESTADO,CEP,RUA,NUMERO)"

@@ -91,7 +91,7 @@
           <h3>Cadastrar Estabelecimentos</h3>
         
           <div class="row">
-            <form class="col s12" style="margin-left: 5%; margin-top: 5%;">
+            <form class="col s12" method="POST" action="front" enctype="multipart/form-data" style="margin-left: 5%; margin-top: 5%;">
               <div class="row">
 
                 <div class="input-field col s6">
@@ -140,7 +140,7 @@
                 <div class="col s6 file-field input-field">
                   <div class="btn">
                     <span>Imagem</span>
-                    <input type="file" name="foto" required>
+                    <input type="file" name="foto" required > 
                   </div>
                   <div class="file-path-wrapper">
                     <input class="file-path validate" type="text">
@@ -153,7 +153,10 @@
                     <label for="endereco">Tipo</label>
                 </div>
 
-                <button class="col s4 btn waves-effect waves-light" type="submit" name="action" style="margin-left: 30%; margin-top: 5%;">Cadastrar</button>
+                <button class="col s4 btn waves-effect waves-light" type="submit" 
+                name="action" style="margin-left: 30%; margin-top: 5%;">Cadastrar</button>
+                
+                <input type="hidden" name="command" value="CadastroEstabelecimento">
 
               </div>
             </form>
