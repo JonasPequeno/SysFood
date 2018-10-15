@@ -43,7 +43,8 @@ public class EstabelecimentoDao implements EstabelecimentoDaoIF{
             state.setString(5, e.getHoraAbertura());
             state.setString(6, e.getHoraFechamento());
             state.setString(7, e.getDescricao());
-            state.setString(8, email);   
+            state.setString(8, email);
+            System.out.println("Email de usuario q adicionou :" + email);
             state.setString(9, e.getCidade());
             state.setString(10, e.getEstado());
             state.setString(11, e.getCep());

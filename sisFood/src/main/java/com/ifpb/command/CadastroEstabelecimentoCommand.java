@@ -4,6 +4,7 @@ import com.ifpb.infra.FileManagement;
 import com.ifpb.interfaces.CommandIF;
 import com.ifpb.model.Estabelecimento;
 import com.ifpb.model.Manager.EstabelecimentoManager;
+import com.ifpb.model.Usuario;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -28,7 +29,11 @@ public class CadastroEstabelecimentoCommand implements CommandIF{
         Estabelecimento estabelecimento = new Estabelecimento();
         EstabelecimentoManager gerenciador = new EstabelecimentoManager();
         
-        String emailUser = request.getParameter("email");
+        Object user = request.getSession().getAttribute("Usuario");
+        Usuario usuario = (Usuario) (user);
+        
+        
+        System.out.println("Email recuperado :" + usuario.getEmail());
         
         
         estabelecimento.setNome(request.getParameter("nome"));
@@ -40,11 +45,10 @@ public class CadastroEstabelecimentoCommand implements CommandIF{
         estabelecimento.setFone(request.getParameter("telefone"));
         estabelecimento.setTipo(request.getParameter("tipo"));
         estabelecimento.setNumero( Integer.parseInt(request.getParameter("numero")));
+        estabelecimento.setUserAdd(usuario.getEmail());
                 
         final Part fotoPerfil = request.getPart("foto");
         
-        System.out.println("Foto :" + fotoPerfil);
-
             OutputStream out = null;
             InputStream filecontent = null;
 
@@ -78,12 +82,10 @@ public class CadastroEstabelecimentoCommand implements CommandIF{
             String fotoBase64 = FileManagement.encodeFile(foto);
             
             
-            System.out.println("Foto base64" + fotoBase64);
             
             estabelecimento.setFoto(fotoBase64);
-            
-            System.out.println("Criado com sucesso " + estabelecimento.toString());
-            gerenciador.inserir(emailUser, estabelecimento);
+                        
+            gerenciador.inserir(usuario.getEmail(), estabelecimento);
             
                        
             
