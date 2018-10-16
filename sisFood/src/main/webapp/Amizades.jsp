@@ -4,6 +4,7 @@
     Author     : Matheus
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -101,39 +102,25 @@
          
          <!--Lista de Ususarios-->
          <ul class="collection">
-            <li class="collection-item avatar">
-                <img src="" alt="" class="circle">
-              <span class="title">João</span>
-              <p>joa@gmail.com<br>
-                 Pegada de homem de roça
-              </p>
-              <div class="row">
-                  <button class=" red btn waves-effect waves-light col s2 right" type="submit" name="seguir">Adicionar
-                     <i class="material-icons right">done</i>
-                  </button>
-                 
-              </div>
-                 
-            </li>        
-         </ul>
+             <c:forEach var="usuario" items="${listaUsuarios}">
+                 <li class="collection-item avatar">
+                    <img src="data:image/jpg;base64,${usuario.fotoPerfil}" alt="" class="circle">
+                    <span class="title"></span>
+                    <p>${usuario.email}<br>
+                       ${usuario.descricao}
+                    </p>
+                    <div class="row">
+                        <button class=" red btn waves-effect waves-light col s2 right" type="submit" name="seguir">Adicionar
+                           <i class="material-icons right">done</i>
+                        </button>
+
+                    </div>
+
+                </li> 
+             </c:forEach>    
+         </ul><br>
          
-         <ul class="collection">
-            <li class="collection-item avatar">
-                <img src="" alt="" class="circle">
-              <span class="title">João</span>
-              <p>joa@gmail.com<br>
-                 Pegada de homem de roça
-              </p>
-              <div class="row">
-                  <button class=" red btn waves-effect waves-light col s2 right" type="submit" name="seguir">Adicionar
-                     <i class="material-icons right">done</i>
-                  </button>
-                 
-              </div>
-                 
-            </li>        
-         </ul>
-         
+        
       </div>
       
       <div class="col s1 offset-s11">

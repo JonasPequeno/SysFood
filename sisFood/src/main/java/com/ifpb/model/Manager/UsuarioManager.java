@@ -44,7 +44,7 @@ public class UsuarioManager implements UsuarioDaoIF{
 
     @Override
     public List<Usuario> listar() {
-       return null;
+       return usuarioDao.listar();
     }
 
     @Override

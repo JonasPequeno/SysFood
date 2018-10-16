@@ -6,36 +6,39 @@
 package com.ifpb.command;
 
 import com.ifpb.interfaces.CommandIF;
-import com.ifpb.model.Comida;
-import com.ifpb.model.Manager.ComidaManager;
+import com.ifpb.model.Manager.UsuarioManager;
+import com.ifpb.model.Usuario;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 
 /**
  *
  * @author Matheus
  */
-public class CadastroComidaCommand implements CommandIF{
+public class AmizadesCommand implements CommandIF{
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws SQLException, ClassNotFoundException, IOException, ServletException {
         
-        ComidaManager comidaM = new ComidaManager();
-        Comida comida = new Comida();
         
-        comida.setNome(request.getParameter("nome"));
-        comida.setDescricao(request.getParameter("descricao"));
-        comida.setPreco(Float.parseFloat(request.getParameter("preco")));
+        UsuarioManager gereciador = new UsuarioManager();
         
-        if(comidaM.inserir(comida)){
-            response.sendRedirect("cadastroComida.jsp");
-        }
-            
+        Object user = request.getSession().getAttribute("Usuario");
+        Usuario usuario = (Usuario) (user);
+        
+        List<Usuario> usuarios = new ArrayList<>();
+            usuarios = gereciador.listar();
+        
+        request.getSession().setAttribute("listaUsuarios",usuarios);
+        
+        response.sendRedirect("Amizades.jsp");
         
     }
-
-   
+    
 }
