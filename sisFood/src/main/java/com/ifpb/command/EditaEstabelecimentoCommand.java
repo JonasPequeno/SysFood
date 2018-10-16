@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.ifpb.command;
 
 import com.ifpb.infra.FileManagement;
@@ -21,21 +26,19 @@ import javax.servlet.http.Part;
  *
  * @author jonas
  */
-public class CadastroEstabelecimentoCommand implements CommandIF{
+public class EditaEstabelecimentoCommand  implements CommandIF{
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws SQLException, ClassNotFoundException, IOException, ServletException {
-    
+        
         Estabelecimento estabelecimento = new Estabelecimento();
         EstabelecimentoManager gerenciador = new EstabelecimentoManager();
         
         Object user = request.getSession().getAttribute("Usuario");
         Usuario usuario = (Usuario) (user);
         
-        
-        System.out.println("Email recuperado :" + usuario.getEmail());
-        
-        
+        String nome = request.getParameter("nome");
+        estabelecimento.setId(Integer.parseInt(request.getParameter("id")));
         estabelecimento.setNome(request.getParameter("nome"));
         estabelecimento.setCidade(request.getParameter("cidade"));
         estabelecimento.setEstado(request.getParameter("estado"));
@@ -46,6 +49,8 @@ public class CadastroEstabelecimentoCommand implements CommandIF{
         estabelecimento.setTipo(request.getParameter("tipo"));
         estabelecimento.setNumero( Integer.parseInt(request.getParameter("numero")));
         estabelecimento.setUserAdd(usuario.getEmail());
+        
+        System.out.println("Estabelecimento editardo :" + estabelecimento.toString());
                 
         final Part fotoPerfil = request.getPart("foto");
         
@@ -84,11 +89,11 @@ public class CadastroEstabelecimentoCommand implements CommandIF{
             
             
             estabelecimento.setFoto(fotoBase64);
-                        
-            gerenciador.inserir(usuario.getEmail(), estabelecimento);
             
-            response.sendRedirect("meusEstabelecimentos.jsp");
-            
+        gerenciador.editar(usuario.getEmail(), estabelecimento);                    
+        response.sendRedirect("meusEstabelecimentos.jsp");
+        
     }
+    
     
 }

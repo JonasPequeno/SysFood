@@ -9,7 +9,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Cadastro de Estabelecimentos</title>
+  <title>Editar de Estabelecimentos</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
@@ -88,7 +88,7 @@
 
       <!--Conteúdo meio da paágina-->
       <div class="col s8 pull-s1" style="margin-top: 2px;">
-          <h3>Cadastrar Estabelecimentos</h3>
+          <h3>Editar Estabelecimentos</h3>
         
           <div class="row">
             <form class="col s12" method="POST" action="front" enctype="multipart/form-data" style="margin-left: 5%; margin-top: 5%;">
@@ -152,11 +152,13 @@
                   <input id="endereco" type="text" name="tipo" value="${param.tipo}" class="validate" required>
                     <label for="endereco">Tipo</label>
                 </div>
+                
+                  <input name="id" value="${param.id}" type="hidden"/>
 
                 <button class="col s4 btn waves-effect waves-light" type="submit" 
                 name="action" style="margin-left: 30%; margin-top: 5%;">Editar</button>
                 
-                <input type="hidden" name="command" value="CadastroEstabelecimento">
+                <input type="hidden" name="command" value="EditaEstabelecimento">
 
               </div>
             </form>

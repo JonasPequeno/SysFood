@@ -4,6 +4,7 @@
     Author     : jonas
 --%>
 
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -85,21 +86,28 @@
       <!--Conteúdo meio da paágina-->
       <div class="col s8 pull-s1" style="margin-top: 2px;">
          <h3>Meus Estabelecimentos</h3>
-         <ul class="collection">
-            <li class="collection-item avatar">
-              <img src="images/yuna.jpg" alt="" class="circle">
-              <span class="title">Title</span>
-              <p>First Line <br>
-                 Second Line
-              </p>
-              <a href="#!" class="secondary-content">
-                  <i class="material-icons">border_color</i>              
-              </a> <br>
-              <a href="#!" class="secondary-content" style="margin-right: 5%">
-                 <i class="material-icons">clear</i>
-              </a> 
-            </li>        
-         </ul>                       
+            <ul class="collection">
+               <c:forEach var="estab" items="${listaEstabelecimento}">
+                    <li class="collection-item avatar">
+                        <img src="data:image/jpg;base64,${estab.foto}"  class="circle">
+                      <span class="title">${estab.nome}</span>
+                      <p>Descriçao: ${estab.descricao}<br>
+                        Localizado: ${estab.cidade}, ${estab.estado} <br>
+                        Rua: ${estab.rua} <br>
+                        Telefone: ${estab.fone}
+                        Numero: ${estab.numero}
+                      </p>
+                      <a class="secondary-content"
+                         href="editarEstabelecimento.jsp?id=${estab.id}&nome=${estab.nome}&cidade=${estab.cidade}&estado=${estab.estado}&cep=${estab.cep}&rua=${estab.rua}&descricao=${estab.descricao}&fone=${estab.fone}&tipo=${estab.tipo}&numero=${estab.numero}">
+                          <i class="material-icons">border_color</i>              
+                      </a> <br>
+
+                      <a href="#!" class="secondary-content" style="margin-right: 5%">
+                         <i class="material-icons">clear</i>
+                      </a> 
+                    </li>  
+               </c:forEach>
+            </ul>                       
       </div>
       
       <div class="col s1 offset-s11">
@@ -118,7 +126,8 @@
     /*Script para data */
     $(document).ready(function(){
      $('.datepicker').datepicker();
-    });
+    });    
+    
   </script>
 
 </body>
