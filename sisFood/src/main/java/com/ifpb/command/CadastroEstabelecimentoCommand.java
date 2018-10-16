@@ -85,9 +85,11 @@ public class CadastroEstabelecimentoCommand implements CommandIF{
             
             estabelecimento.setFoto(fotoBase64);
                         
-            gerenciador.inserir(usuario.getEmail(), estabelecimento);
+            if(gerenciador.inserir(usuario.getEmail(), estabelecimento)) {
+                response.sendRedirect("meusEstabelecimentos.jsp");
+            }
             
-            response.sendRedirect("meusEstabelecimentos.jsp");
+           
             
     }
     

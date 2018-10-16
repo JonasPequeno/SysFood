@@ -45,7 +45,12 @@ public class EstabelecimentoManager implements EstabelecimentoDaoIF{
 
     @Override
     public boolean remover(String email, Estabelecimento e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            return estabelecimentoDao.remover(email, e);
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());            
+        }
+        return false;
     }
 
     @Override
