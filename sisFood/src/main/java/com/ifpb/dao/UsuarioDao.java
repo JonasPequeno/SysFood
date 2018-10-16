@@ -53,6 +53,7 @@ public class UsuarioDao implements UsuarioDaoIF {
     @Override
     public boolean editar(Usuario usuario) {
         try {      
+            usuario.getEmail();
             System.out.println("Usuario" + usuario);
             System.out.println("Dao :"+usuario.toString());
             Connection con = Conexao.getConnection();

@@ -70,12 +70,12 @@
           <div class="col s8">
             <div class="menu #f3e5f5 purple lighten-5 center">
               
-                <a class="waves-effect black-text " href="#">Amigos</a>
-                <a class="waves-effect black-text " href="#">Novos Amigos</a>
+                <a class="waves-effect black-text " href="front?command=Amigo">Amigos</a>
+                <a class="waves-effect black-text " href="front?command=Amizades">Novos Amigos</a>
                 <a class="waves-effect black-text " href="#">Mesagens</a>
                 <a class="waves-effect black-text " href="front?command=MinhasComidas">Minhas Comidas</a>
                 <a class="waves-effect black-text " href="front?command=Estabelecimento">Meus Estabelecimentos</a>
-                <a class="waves-effect black-text " href="front?command=Sair" >Sair</a>
+                <a class="waves-effect black-text " href="front?command=Sair" >Sair</a>             
               
             </div>
           </div> 

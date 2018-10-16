@@ -57,7 +57,7 @@
               </div>
 
               <div class="card-content #f3e5f5 purple lighten-5 center">
-                <a href="#"><i class="material-icons">settings</i></a>
+                <a href="Configuracao.jsp?nome=${Usuario.nome}&cidade=${Usuario.cidade}&estado=${Usuario.estado}&cep=${Usuario.cep}&rua=${Usuario.rua}&descricao=${Usuario.descricao}&fone=${Usuario.fone}&numero=${Usuario.numero}"><i class="material-icons">settings</i></a>
                 <br>
                 <p>${Usuario.profissao}</p>
                 <p>Mora em ${Usuario.cidade}, ${Usuario.estado}</p>                
@@ -72,7 +72,7 @@
               
                 <a class="waves-effect black-text " href="front?command=Amigo">Amigos</a>
                 <a class="waves-effect black-text " href="front?command=Amizades">Novos Amigos</a>
-                <a class="waves-effect black-text " href="#">Mesagens</a>
+                <a class="waves-effect black-text " href="front?command=Amigo">Mesagens</a>
                 <a class="waves-effect black-text " href="front?command=MinhasComidas">Minhas Comidas</a>
                 <a class="waves-effect black-text " href="front?command=Estabelecimento">Meus Estabelecimentos</a>
                 <a class="waves-effect black-text " href="front?command=Sair" >Sair</a>

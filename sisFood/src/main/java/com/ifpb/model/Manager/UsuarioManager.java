@@ -34,7 +34,7 @@ public class UsuarioManager implements UsuarioDaoIF{
 
     @Override
     public boolean editar(Usuario usuario) {
-       return true;
+       return usuarioDao.editar(usuario);       
     }
 
     @Override

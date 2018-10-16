@@ -55,13 +55,13 @@
             <div class="row">
 
                 <div class="input-field col s12">
-                    <input id="nome" name="nome" type="text" class="validate">
+                    <input id="nome" value="${Usuario.nome}" name="nome" type="text" class="validate">
                     <label for="nome">Nome</label>
                 </div>
           
 
                 <div class="input-field col s6">
-                        <input type="text" name="sexo" maxlength="1" required > 
+                        <input type="text" value="${Usuario.sexo}" name="sexo" maxlength="1" required > 
                         <label for="sexo">Sexo</label>
                 </div>
 
@@ -78,38 +78,38 @@
                 </div>
 
                 <div class="input-field col s12">   
-                        <input type="text" name="descricao" required>
+                        <input value="${Usuario.descricao}" type="text" name="descricao" required>
                         <label for="nome">Descricao</label>
                 </div>     
 
                 <div class="input-field col s4">   
-                          <input type="text" name="profissao" required>
+                          <input value="${Usuario.profissao}" type="text" name="profissao" required>
                             <label for="profissao">Profissao</label>
                 </div>            
 
                 <div class="input-field col s4">   
-                        <input type="text" name="rua" required>
+                        <input value="${Usuario.rua}" type="text" name="rua" required>
                         <label for="rua">Rua</label>
                 </div>
 
 
                 <div class="input-field col s4">   
-                    <input type="text" name="estado" required>
+                    <input type="text" name="estado" value="${Usuario.estado}" required>
                     <label for="estado">Estado</label>
                 </div>
 
                 <div class="input-field col s4">   
-                    <input type="text" name="cidade" required>
+                    <input type="text" name="cidade" value="${Usuario.cidade}" required>
                     <label for="cidade">Cidade</label>
                 </div>
 
                 <div class="input-field col s4">   
-                    <input type="text" name="fone" required>
+                    <input type="text" name="fone" value="${Usuario.fone}" required>
                     <label for="fone">Fone</label>
                 </div>
 
                 <div class="input-field col s4">   
-                    <input type="text" name="cep" required>
+                    <input type="text" name="cep" value="${Usuario.cep}" required>
                     <label for="cep">Cep</label>
                 </div>
 
@@ -128,6 +128,7 @@
               <button class="btn waves-effect waves-light col s4" type="submit" name="excluir" style="margin-left: 20%;">Excluir Conta</button>
 
             </div>
+            <input type="hidden" name="command" value="EditaUsuario">
           </form>
       </div>
             
