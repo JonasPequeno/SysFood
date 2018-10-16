@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Matheus
  */
-public class ComidaCommand implements CommandIF{
+public class CadastroComidaCommand implements CommandIF{
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws SQLException, ClassNotFoundException, IOException, ServletException {
