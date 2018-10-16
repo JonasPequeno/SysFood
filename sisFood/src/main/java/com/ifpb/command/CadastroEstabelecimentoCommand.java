@@ -31,11 +31,7 @@ public class CadastroEstabelecimentoCommand implements CommandIF{
         
         Object user = request.getSession().getAttribute("Usuario");
         Usuario usuario = (Usuario) (user);
-        
-        
-        System.out.println("Email recuperado :" + usuario.getEmail());
-        
-        
+                               
         estabelecimento.setNome(request.getParameter("nome"));
         estabelecimento.setCidade(request.getParameter("cidade"));
         estabelecimento.setEstado(request.getParameter("estado"));

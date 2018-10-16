@@ -1,19 +1,19 @@
 <%-- 
-    Document   : amigos
-    Created on : 12/10/2018, 15:36:58
+    Document   : home
+    Created on : 31/08/2018, 22:45:07
     Author     : jonas
 --%>
 
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <title>Amigos</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
+	<meta charset="utf-8">
+	<title>Home</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
   <style type="text/css">
 
@@ -43,7 +43,7 @@
   </nav>
    
 
-<div class="row">
+ <div class="row">
     
       <!--Perfil e Menu-->
       <div class="col s4">
@@ -66,7 +66,7 @@
           </div>
         </div>
 
-     <div class="row">
+        <div class="row">
           <div class="col s8">
             <div class="menu #f3e5f5 purple lighten-5 center">
               
@@ -85,49 +85,42 @@
 
       <!--Conteúdo meio da paágina-->
       <div class="col s8 pull-s1" style="margin-top: 2px;">
-         <h3>Meus Amigos</h3>
-         <ul class="collection">
-            <c:forEach var="amigo" items="${listaAmigos}">
-                <li class="collection-item avatar">
-                  <img src="data:image/jpg;base64,${amigo.fotoPerfil}" alt="" class="circle">
-                  <span class="title">${amigo.nome}</span>
-                  <p>${amigo.email}<br>
-                     ${amigo.descricao}
-                  </p>
+        
+        <ul class="collection">
+            <li class="collection-item avatar">
+              <img src="data:image/jpg;base64,${param.fotoPerfil}" alt="" class="circle">
+              <span class="title">${param.nome}</span>
+              <p>${param.emailDes}<br>
+                 ${param.descricao}
+              </p>
+              <div class="row">
+              </div>
+                 
+            </li>        
+         </ul>   
+                 
+        <div class="row">
+                <form method="POST" action="front" class="col s12 ">
                   <div class="row">
-                      <button class=" red btn waves-effect waves-light col s2 push-s7" type="submit" name="seguir">Seguir
-                         <i class="material-icons right">done</i>
-                      </button>
-
-                      <button class="red btn waves-effect waves-light col s2 right" type="submit" name="excluir">Excluir
-                         <i class="material-icons right">clear</i>
-                      </button>
-
-                      <a  href="enviaMensagem.jsp?emailDes=${amigo.email}&descricao=${amigo.descricao}&nome=${amigo.nome}" class="red btn waves-effect waves-light col s2 push-s2 " type="submit" name="enviaMensagem">Mensagem
-                          <i class="material-icons right">clear</i>
-                      </a>
+                    <div class="input-field col s10 ">
+                        <input id="msg" type="text" name="msg" class="validate">
+                    </div>
+                      <button type="submit" class="col s2 right" style="margin-top: 10px;"  name="action">Enviar</button>
                   </div>
-                </li>      
-            </c:forEach>
-         </ul>                       
-      </div>
-      
-      <div class="col s1 offset-s11">
-                   
-      </div>
+                    <input name="emailDes" value="${param.emailDes}" type="hidden"/>
+                  <input type="hidden" name="command" value="EnviaMensagem">
+                </form>
+            </div>    
+        </div>                  
+
+  <!--Fim da row2-->
+  </div>
+
+
        
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>       
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  
-  <script>
-    /*Script para Dropdown */
-    $('.dropdown-trigger').dropdown();
-    
-    /*Script para data */
-    $(document).ready(function(){
-     $('.datepicker').datepicker();
-    });
-  </script>
 
 </body>
 </html>
+

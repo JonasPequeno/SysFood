@@ -12,4 +12,5 @@ public interface DaoFactoryIF {
     public SeguirIF criaSeguirDao();
     public SolicitaAmizade criaSolicitaAmizadeDao();    
     public UsuarioDaoIF criaUsuarioDao();
+    public MensagemDaoIF criaMensagemDaoIf();
 }

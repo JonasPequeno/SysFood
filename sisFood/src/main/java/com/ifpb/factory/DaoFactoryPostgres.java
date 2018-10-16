@@ -4,6 +4,7 @@ package com.ifpb.factory;
 import com.ifpb.dao.AmigosDao;
 import com.ifpb.dao.ComidaDao;
 import com.ifpb.dao.EstabelecimentoDao;
+import com.ifpb.dao.MensageDao;
 import com.ifpb.dao.SeguirDao;
 import com.ifpb.dao.SolicitacaoAmizadeDao;
 import com.ifpb.dao.UsuarioDao;
@@ -11,6 +12,7 @@ import com.ifpb.interfaces.AmigosIF;
 import com.ifpb.interfaces.ComidaDaoIF;
 import com.ifpb.interfaces.DaoFactoryIF;
 import com.ifpb.interfaces.EstabelecimentoDaoIF;
+import com.ifpb.interfaces.MensagemDaoIF;
 import com.ifpb.interfaces.SeguirIF;
 import com.ifpb.interfaces.SolicitaAmizade;
 import com.ifpb.interfaces.UsuarioDaoIF;
@@ -49,6 +51,11 @@ public class DaoFactoryPostgres implements DaoFactoryIF{
     @Override
     public UsuarioDaoIF criaUsuarioDao() {  
         return new UsuarioDao();
+    }
+
+    @Override
+    public MensagemDaoIF criaMensagemDaoIf() {
+        return new MensageDao();
     }
     
 }
