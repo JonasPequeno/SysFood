@@ -103,7 +103,7 @@
                           <i class="material-icons">border_color</i>              
                       </a> <br>
 
-                      <a href="#!" class="secondary-content" style="margin-right: 5%">
+                      <a href="front?command=DeletarEstabelecimento&estabelecimentoId=${estab.id}" class="secondary-content" style="margin-right: 5%">
                          <i class="material-icons">clear</i>
                       </a> 
                     </li>  
