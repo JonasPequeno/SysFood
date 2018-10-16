@@ -69,7 +69,7 @@ public class EstabelecimentoDao implements EstabelecimentoDaoIF{
             Connection con = Conexao.getConnection();
             String sql = "UPDATE ESTABELECIMENTO SET NOME = ?, FOTO = ?,FONE = ?,TIPO = ?,HORAABERTURA = ?,HORAFECHAMENTO = ? ,"
                     + "DESCRICAO = ?,CIDADE = ?,ESTADO = ?,CEP = ?,RUA = ?,NUMERO = ?"
-                    + "WHERE USERADD = ? ";
+                    + "WHERE USERADD = ? AND ID = ? ";
             PreparedStatement state = con.prepareStatement(sql);
             
             state.setString(1, e.getNome());
@@ -85,6 +85,7 @@ public class EstabelecimentoDao implements EstabelecimentoDaoIF{
             state.setString(11, e.getRua());
             state.setInt(12, e.getNumero());
             state.setString(13, email);
+            state.setInt(14, e.getId());
             
             state.executeUpdate();
             state.close();
@@ -148,10 +149,11 @@ public class EstabelecimentoDao implements EstabelecimentoDaoIF{
                 e.setCidade(result.getString("cidade"));
                 e.setCidade(result.getString("cidade"));
                 e.setEstado(result.getString("estado"));
+                e.setFone(result.getString("fone"));
                 e.setCep(result.getString("cep"));
                 
                 estabele.add(e);
-                System.out.println("Estabelecimento recuperado :" + e.toString());
+                System.out.println("Estabelecimento recuperado :" + e.getFone());
             }
             return estabele;
             
@@ -164,12 +166,12 @@ public class EstabelecimentoDao implements EstabelecimentoDaoIF{
     
     @Override   
     public List<Estabelecimento> getEstabelecimentosUsuario (String usuario) {
+        List<Estabelecimento> lista = new ArrayList<>();
         try{
+           
             
-            List<Estabelecimento> lista = new ArrayList<>();
             Connection con = Conexao.getConnection();
             String sql = "SELECT * FROM ESTABELECIMENTO E WHERE E.UserAdd ilike ?";
-            Estabelecimento e = new Estabelecimento();
             
             PreparedStatement state = con.prepareStatement(sql);
             
@@ -178,6 +180,9 @@ public class EstabelecimentoDao implements EstabelecimentoDaoIF{
             ResultSet result = state.executeQuery();
             
             while (result.next())  {
+                
+                Estabelecimento e = new Estabelecimento();
+                
                 e.setId(result.getInt("id"));
                 e.setFoto(result.getString("foto"));
                 e.setNome(result.getString("nome"));
@@ -191,10 +196,12 @@ public class EstabelecimentoDao implements EstabelecimentoDaoIF{
                 e.setCidade(result.getString("cidade"));
                 e.setCidade(result.getString("cidade"));
                 e.setEstado(result.getString("estado"));
+                e.setFone(result.getString("fone"));
                 e.setCep(result.getString("cep"));                                    
-                
+                                               
                 lista.add(e);
-            }
+                System.out.println("Id do estabelecimento no dao :" + e.getId());
+            }                
             
             return lista;
             

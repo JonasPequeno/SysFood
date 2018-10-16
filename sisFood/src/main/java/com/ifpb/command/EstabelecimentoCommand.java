@@ -32,8 +32,7 @@ public class EstabelecimentoCommand implements CommandIF{
         
         List<Estabelecimento> lista = new ArrayList<>();
                 lista = gerenciador.getEstabelecimentosUsuario(u.getEmail());
-        
-                System.out.println("Lista" + lista.toString());
+                         
                 
         request.getSession().setAttribute("listaEstabelecimento", lista);
         
