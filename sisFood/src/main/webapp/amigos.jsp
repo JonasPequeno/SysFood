@@ -38,7 +38,7 @@
   <!--Barra de navegaão-->
   <nav>
     <div class="nav-wrapper #7b1fa2 purple darken-2">
-      <a href="#" class="brand-logo" style="margin-left: 2%;">SysFood</a>
+      <a href="front?command=Home" class="brand-logo" style="margin-left: 2%;">SysFood</a>
     </div>
   </nav>
    
