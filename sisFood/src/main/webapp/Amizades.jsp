@@ -1,19 +1,18 @@
 <%-- 
-    Document   : home
-    Created on : 31/08/2018, 22:45:07
-    Author     : jonas
+    Document   : Amizades
+    Created on : 15/10/2018, 22:40:47
+    Author     : Matheus
 --%>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<title>Home</title>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <meta charset="utf-8">
+  <title>Amigos</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 
   <style type="text/css">
 
@@ -43,7 +42,7 @@
   </nav>
    
 
- <div class="row">
+<div class="row">
     
       <!--Perfil e Menu-->
       <div class="col s4">
@@ -66,7 +65,7 @@
           </div>
         </div>
 
-        <div class="row">
+     <div class="row">
           <div class="col s8">
             <div class="menu #f3e5f5 purple lighten-5 center">
               
@@ -86,43 +85,73 @@
 
       <!--Conteúdo meio da paágina-->
       <div class="col s8 pull-s1" style="margin-top: 2px;">
-        
-        <div class="row">
-
-          <!--Restaurante 01-->
-          <div class="col s12">
-            <div class="card horizontal">
-              <div class="card-image">
-                <img src="data:image/jpg;base64,${Usuario.fotoPerfil}">
-                <span class="card-title">Restaurante-01</span>
-              </div>
-              <div class="card-stacked">
-                <div class="card-content">
-                  <p>${Usuario.nome}</p>
+         <h3>Novas Amizades</h3>
+         <!--Barra de Busca de Usuario-->
+         <nav>
+            <div class="nav-wrapper">
+              <form>
+                <div class="input-field">
+                  <input id="search" type="search" name="procurar" required>
+                  <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                  <i class="material-icons">close</i>
                 </div>
-                <div class="card-action">
-                  <a href="#">Marcar Presença</a>
-                  <a href="#">Divulgar</a>
-                  <a href="#">Compartilhar</a>
-                  <a href="#">Comentar</a>
-                  <a href="#">This is a link</a>
-                </div>
-              </div>
+              </form>
             </div>
-          </div>
-            
-        </div>            
+          </nav>    
+         
+         <!--Lista de Ususarios-->
+         <ul class="collection">
+            <li class="collection-item avatar">
+                <img src="" alt="" class="circle">
+              <span class="title">João</span>
+              <p>joa@gmail.com<br>
+                 Pegada de homem de roça
+              </p>
+              <div class="row">
+                  <button class=" red btn waves-effect waves-light col s2 right" type="submit" name="seguir">Adicionar
+                     <i class="material-icons right">done</i>
+                  </button>
+                 
+              </div>
+                 
+            </li>        
+         </ul>
+         
+         <ul class="collection">
+            <li class="collection-item avatar">
+                <img src="" alt="" class="circle">
+              <span class="title">João</span>
+              <p>joa@gmail.com<br>
+                 Pegada de homem de roça
+              </p>
+              <div class="row">
+                  <button class=" red btn waves-effect waves-light col s2 right" type="submit" name="seguir">Adicionar
+                     <i class="material-icons right">done</i>
+                  </button>
+                 
+              </div>
+                 
+            </li>        
+         </ul>
+         
       </div>
-
-
-  <!--Fim da row2-->
-  </div>
-
-
+      
+      <div class="col s1 offset-s11">
+                   
+      </div>
        
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>       
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  
+  <script>
+    /*Script para Dropdown */
+    $('.dropdown-trigger').dropdown();
+    
+    /*Script para data */
+    $(document).ready(function(){
+     $('.datepicker').datepicker();
+    });
+  </script>
 
 </body>
 </html>
-
