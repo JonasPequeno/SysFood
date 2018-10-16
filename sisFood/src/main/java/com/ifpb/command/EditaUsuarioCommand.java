@@ -79,6 +79,8 @@ public class EditaUsuarioCommand implements CommandIF{
             u.setFotoPerfil(fotoBase64);
         
         g.editar(u);
+        
+        request.getSession().setAttribute("Usuario", u); 
         response.sendRedirect("home.jsp");
 
     }

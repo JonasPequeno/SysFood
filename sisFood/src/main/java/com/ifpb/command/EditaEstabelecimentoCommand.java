@@ -90,8 +90,10 @@ public class EditaEstabelecimentoCommand  implements CommandIF{
             
             estabelecimento.setFoto(fotoBase64);
             
-        gerenciador.editar(usuario.getEmail(), estabelecimento);                    
-        response.sendRedirect("meusEstabelecimentos.jsp");
+        gerenciador.editar(usuario.getEmail(), estabelecimento);
+        EstabelecimentoCommand ac = new EstabelecimentoCommand();
+        ac.execute(request, response);
+        
         
     }
     

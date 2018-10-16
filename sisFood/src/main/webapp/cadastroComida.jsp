@@ -114,7 +114,7 @@
                 <button class="col s4 btn waves-effect waves-light" type="submit" name="action" style="margin-left: 30%; margin-top: 5%;">Cadastrar</button>
 
               </div>
-              <input type="hidden" name="command" value="Comida">
+              <input type="hidden" name="command" value="CadastroComida">
             </form>
           </div>
             
